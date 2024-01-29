@@ -2,145 +2,7 @@
 @section('content')
 
     
-  <!-- Main Content -->
-    <main class="body-content">
 
-        <!-- Navigation Bar -->
-        <nav class="navbar ms-navbar">
-
-        <div class="ms-aside-toggler ms-toggler pl-0" data-target="#ms-side-nav" data-toggle="slideLeft">
-            <span class="ms-toggler-bar bg-primary"></span>
-            <span class="ms-toggler-bar bg-primary"></span>
-            <span class="ms-toggler-bar bg-primary"></span>
-        </div>
-
-        <div class="logo-sn logo-sm ms-d-block-sm">
-            <a class="pl-0 ml-0 text-center navbar-brand mr-0" href="../dashboard/index.html"><img src="{{asset('assets/img/m-logo-1.png')}}" alt="logo"> </a>
-        </div>
-
-        <ul class="ms-nav-list ms-inline mb-0" id="ms-nav-options">
-            <li class="ms-nav-item ms-search-form pb-0 py-0">
-            <form class="ms-form" method="post">
-                <div class="ms-form-group my-0 mb-0 has-icon fs-14">
-                <input type="search" class="ms-form-input" name="search" placeholder="Search here..." value="">
-                <i class="flaticon-search text-disabled"></i>
-                </div>
-            </form>
-            </li>
-            <li class="ms-nav-item dropdown">
-            <a href="#" class="text-disabled ms-has-notification" id="mailDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-mail"></i></a>
-            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="mailDropdown">
-                <li class="dropdown-menu-header">
-                <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Mail</span></h6><span class="badge badge-pill badge-success">3 New</span>
-                </li>
-                <li class="dropdown-divider"></li>
-                <li class="ms-scrollable ms-dropdown-list">
-                <a class="media p-2" href="#">
-                    <div class="ms-chat-status ms-status-offline ms-chat-img mr-2 align-self-center">
-                    <img src="{{ asset('assets/img/project-management/people-5.jpg')}}" class="ms-img-round" alt="people">
-                    </div>
-                    <div class="media-body">
-                    <span>Hey man, looking forward to your new project.</span>
-                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 30 seconds ago</p>
-                    </div>
-                </a>
-                <a class="media p-2" href="#">
-                    <div class="ms-chat-status ms-status-online ms-chat-img mr-2 align-self-center">
-                    <img src="{{ asset('assets/img/project-management/people-12.jpg')}}" class="ms-img-round" alt="people">
-                    </div>
-                    <div class="media-body">
-                    <span>Dear John, I was told you bought mylo! Send me your feedback</span>
-                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 28 minutes ago</p>
-                    </div>
-                </a>
-                <a class="media p-2" href="#">
-                    <div class="ms-chat-status ms-status-offline ms-chat-img mr-2 align-self-center">
-                    <img src="{{asset('assets/img/project-management/people-12.jpg')}}" class="ms-img-round" alt="people">
-                    </div>
-                    <div class="media-body">
-                    <span>How many people are we inviting to the dashboard?</span>
-                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 6 hours ago</p>
-                    </div>
-                </a>
-                </li>
-                <li class="dropdown-divider"></li>
-                <li class="dropdown-menu-footer text-center">
-                <a href="pages/apps/email.html">Go to Inbox</a>
-                </li>
-            </ul>
-            </li>
-            <li class="ms-nav-item dropdown">
-            <a href="#" class="text-disabled ms-has-notification" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-bell"></i></a>
-            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationDropdown">
-                <li class="dropdown-menu-header">
-                <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Notifications</span></h6><span class="badge badge-pill badge-info">4 New</span>
-                </li>
-                <li class="dropdown-divider"></li>
-                <li class="ms-scrollable ms-dropdown-list">
-                <a class="media p-2" href="#">
-                    <div class="media-body">
-                    <span>12 ways to improve your crypto dashboard</span>
-                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 30 seconds ago</p>
-                    </div>
-                </a>
-                <a class="media p-2" href="#">
-                    <div class="media-body">
-                    <span>You have newly registered users</span>
-                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 45 minutes ago</p>
-                    </div>
-                </a>
-                <a class="media p-2" href="#">
-                    <div class="media-body">
-                    <span>Your account was logged in from an unauthorized IP</span>
-                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 2 hours ago</p>
-                    </div>
-                </a>
-                <a class="media p-2" href="#">
-                    <div class="media-body">
-                    <span>An application form has been submitted</span>
-                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 1 day ago</p>
-                    </div>
-                </a>
-                </li>
-                <li class="dropdown-divider"></li>
-                <li class="dropdown-menu-footer text-center">
-                <a href="#">View all Notifications</a>
-                </li>
-            </ul>
-            </li>
-            <li class="ms-nav-item">
-            <a href="#" class="text-disabled ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight"><i class="flaticon-menu"></i></a>
-            </li>
-            <li class="ms-nav-item ms-nav-user dropdown">
-            <a href="#"  id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img class="ms-user-img ms-img-round float-right" src="{{ asset('assets/img/project-management/people-5.jpg')}}" alt="people"> </a>
-            <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
-                <li class="dropdown-menu-header">
-                <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Welcome, Farisha</span></h6>
-                </li>
-                <li class="dropdown-divider"></li>
-                <li class="ms-dropdown-list">
-                <a class="media fs-14 p-2" href="pages/prebuilt-pages/user-profile.html"> <span><i class="flaticon-user mr-2"></i> Profile</span> </a>
-                <a class="media fs-14 p-2" href="pages/apps/email.html"> <span><i class="flaticon-mail mr-2"></i> Inbox</span> <span class="badge badge-pill badge-info">3</span> </a>
-                <a class="media fs-14 p-2" href="pages/prebuilt-pages/user-profile.html"> <span><i class="flaticon-gear mr-2"></i> Account Settings</span> </a>
-                </li>
-                <li class="dropdown-divider"></li>
-                <li class="dropdown-menu-footer">
-                <a class="media fs-14 p-2" href="pages/prebuilt-pages/lock-screen.html"> <span><i class="flaticon-security mr-2"></i> Lock</span> </a>
-                </li>
-                <li class="dropdown-menu-footer">
-                <a class="media fs-14 p-2" href="pages/prebuilt-pages/default-login.html"> <span><i class="flaticon-shut-down mr-2"></i> Logout</span> </a>
-                </li>
-            </ul>
-            </li>
-        </ul>
-
-        <div class="ms-toggler ms-d-block-sm pr-0 ms-nav-toggler" data-toggle="slideDown" data-target="#ms-nav-options">
-            <span class="ms-toggler-bar bg-primary"></span>
-            <span class="ms-toggler-bar bg-primary"></span>
-            <span class="ms-toggler-bar bg-primary"></span>
-        </div>
-
-        </nav>
         <div class="ms-content-wrapper" style="">
         <div class="ms-panel">
         <div class="ms-panel-body">
@@ -188,12 +50,12 @@
                         <div class="main-div">
                             <div class="topSideline-con">
                                 <div class="topSideline"></div>
-                                <p class="p-tag-new">t<span class="p-r-span">e</span> <span class="p-deg-span">08&degC</span></p>
+                                <p class="p-tag-new">t<span class="p-r-span">e</span> <span class="p-deg-span temp4">08&degC</span></p>
                             </div>
                             <div class="diag-bt-slide {{ $showDevice ? 'hidden_dev' : '' }}"></div>
                             <div class="bottomSideline-con">
                                 <div class="bottomSideline"></div>
-                                <p class="p-tag-new p-tag-mar">t<span class="p-r-span">f</span> <span class="p-deg-span">07&degC</span></p>
+                                <p class="p-tag-new p-tag-mar">t<span class="p-r-span">f</span> <span class="p-deg-span temp1">07&degC</span></p>
                             </div>
                             <div class="gif-content-line">
                                 <p class="m-tag-chng  {{ $showDevice ? '': 'hidden_dev' }}" style="margin-right:89px;">M<span>e</span></p>
@@ -292,7 +154,7 @@
                         </div>
                         <div class="main-div-two">
                             <div class="second-sub-div">
-                                <p class="p-tag-new p-tag-mar2">t<span class="p-r-span">s</span> <span class="p-deg-span">20&degC</span></p>
+                                <p class="p-tag-new p-tag-mar2">t<span class="p-r-span">s</span> <span class="p-deg-span temp3">20&degC</span></p>
                                 <div class="line-sky"></div>
                             </div>
                             <div class="fan-right1">
@@ -304,7 +166,7 @@
                                 <div class="aft-sky-fan"></div>
                             </div>
                             <div class="second-sub-div2">
-                                <p class="p-tag-new p-tag-mar2" style="margin-top:0px;">t<span class="p-r-span">r</span> <span class="p-deg-span">21&degC</span></p>
+                                <p class="p-tag-new p-tag-mar2" style="margin-top:0px;">t<span class="p-r-span">r</span> <span class="p-deg-span temp2">21&degC</span></p>
                                 <img src="{{asset('assets/images/filter_green.png')}}" class="imgtoweryelow  {{ $showDevice ? '': 'hidden_dev' }}" />
                                 <div class="txt-last co2celcius  {{ $showDevice ? '': 'hidden_dev' }}">
                                     <div class="dot-last second-dot" ></div>
@@ -340,7 +202,7 @@
                     </div>
                 </div>
             <!-- </div> -->
-            <div style="width: 100%; text-align: center; color: whtie;font-size: 22px;">settable parameters</div>
+            <div style="width: 100%; text-align: center; color: whtie;font-size: 22px;">Settable parameters</div>
             <div class="ms-panel" style="border: 1px solid rgb(229,233,241); border-radius: 30px; padding: 20px;">
             <div class="ms-panel-body">
                 <div class="row" >
@@ -349,9 +211,9 @@
                             <table class="table table-hover thead-primary">
                                 <thead>
                                     <tr>
-                                    <th scope="col">fan</th>
+                                    <th scope="col">Fan</th>
                                     <th scope="col">FSC[%]</th>
-                                    <th scope="col">airflow CAF</th>
+                                    <th scope="col">Airflow CAF</th>
                                     <th scope="col">RPM</th>
                                     </tr>
                                 </thead>
@@ -375,13 +237,13 @@
                             <table class="table table-hover thead-primary">
                                 <thead>
                                     <tr>
-                                    <th scope="col">fbypass</th>
+                                    <th scope="col">Bypass</th>
                                     <th scope="col">Open (1) /closed (0)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                    <td>status</td>
+                                    <td>Status</td>
                                     <td><input type="text" class="form-control form-control-sm" value="0" style="width:70px;"></td>
                                     </tr>                        
                                 </tbody>
@@ -391,22 +253,20 @@
                             <table class="table table-hover thead-primary">
                                 <thead>
                                     <tr>
-                                    <th scope="col">filter</th>
-                                    <th scope="col">Status (clogged (0) – clean (100) )</th>
-                                    <th scope="col">reset</th>
+                                    <th >Filter</th>
+                                    <th >Status (clogged (0) – clean (100) )</th>
+                                    <th >Reset</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                    <td>fresh</td>
-                                    <td rowspan="2" style="display:flex;justify-content:center; align-items:center;">
-                                        <input type="text" class="form-control form-control-sm" value="70" style="width:70px;">
-                                    </td>
-                                    <td rowspan="2"></td>
-                                    </tr>
+                                        <td>Fresh</td>
+                                        <td rowspan="2" class="mqtt-status-ipt-con"><input type="text" class="form-control form-control-sm" value="70" style="width:70px;"></td>
+                                        <td rowspan='2' class="mqtt-reset-btn-con"><div class="mqtt-reset-btn">Reset</div></td>
+                                    </tr>                     
                                     <tr>
-                                    <td>return</td>
-                                    </tr>                           
+                                        <td>Return</td>
+                                    </tr>      
                                 </tbody>
                             </table>
                         </div>
@@ -429,7 +289,7 @@
                         <table class="table table-hover thead-primary">
                             <thead>
                                 <tr>
-                                <th scope="col">fan</th>
+                                <th scope="col">Fan</th>
                                 <th scope="col" colspan="5">Monday</th>
                                 <th scope="col" colspan="5" >Tuesday</th>
                                 <th scope="col" colspan="5" >Wednesday</th>
@@ -441,7 +301,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>time</td>
+                                    <td>Time</td>
                                     <td>12:00</td><td>14:00</td><td>15:00</td><td>18:00</td><td>12:00</td>
                                     <td></td><td></td><td></td><td></td><td></td>
                                     <td></td><td></td><td></td><td></td><td></td>
@@ -451,7 +311,7 @@
                                     <td></td><td></td><td></td><td></td><td></td>                               
                                 </tr>      
                                 <tr>
-                                    <td>speed</td>
+                                    <td>Speed</td>
                                     <td>20%</td><td>50%</td><td>70%</td><td>20%</td><td>1400</td>
                                     <td></td><td></td><td></td><td></td><td></td>
                                     <td></td><td></td><td></td><td></td><td></td>
@@ -470,8 +330,6 @@
         </div>
 
 
-
-    </main>
 <script>
     (function($) {
         'use strict';

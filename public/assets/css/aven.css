@@ -49,7 +49,8 @@ span{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 25px;
+    margin-top: 40px;
+    margin-right: 10px;
 }
 .topSideline-con{
     /* width: 40px;
@@ -82,12 +83,12 @@ span{
 .diag-bt-slide{
     position: absolute;
     left: 24px;
-    top: 187px;
+    top: 178px;
     width: 65px;
     height: 11px;
     background-color: #3fa535;
     margin-right: 5px;
-    transform: rotate(-15deg);
+    /* transform: rotate(-15deg); */
 }
 .btm-p{
     margin-top: -36px;
@@ -98,7 +99,7 @@ span{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 36px;
+    margin-top: 20px;
     position: relative;
 }
 .main-div{ 
@@ -121,13 +122,14 @@ span{
     width: 100%;
     height: 11px;
     position: relative;
-    margin-top: 25px;
+    margin-top: 8px;
+    margin-left: 5px;
 }
 .imgTowerFirst{
     height: 82px;
     position: absolute;
     margin-left: 43px;
-    margin-top: -14px;
+    margin-top: -25px;
 }
 .top-fan-content{
     display: flex;
@@ -155,7 +157,7 @@ span{
 }
 .txt-top-two{
     font-size: 16px;
-    margin-top: 20px;
+    margin-top: 7px;
     width: 100%;
     margin-left: 70px;
 }
@@ -188,7 +190,7 @@ span{
     margin-right: 10px;
     position: absolute;
     left: 25.7%;
-    top: 34%;
+    top: 34.5%;
 }
 .dot-img-2{
     width: 14px;
@@ -199,7 +201,7 @@ span{
     margin-right: 10px;
     position: absolute;
     left: 56.8%;
-    top: 33.6%;
+    top: 34.6%;
 }
 .dot-fan-one{
     width: 14px;
@@ -208,8 +210,8 @@ span{
     background-color: #3fa535;
     border: 2px solid black;
     position: absolute;
-    top: 21px;
-    left: 49px;
+    top: 20px;
+    left: 44px;
 }
 .dot-fan-two{
     width: 14px;
@@ -261,12 +263,12 @@ span{
     margin-top: 14px;
 }
 .imgtoweryelow{height: 82px;top: -23px;
-    right: 60%;
+    right: -35%;
    position: absolute;
     z-index: 2;}
  .co2{width:35px; height: 35px; border-radius: 50%; border: 1px solid #000; text-align: center; line-height:40px ; position: absolute; right: 42%;top: 0px;    font-size: 14px;
     line-height: 38px;}
- .co2celcius{margin-top: 93px;margin-left: 22px;}
+ .co2celcius{margin-top: 75px;margin-left: 310px;}
  .co2celcius p{margin-top: 0px;}
 
  .co2celcius3{ margin-top: 44px;
@@ -355,7 +357,7 @@ span{
     position: absolute;
     z-index: 5;
     width: 60px;
-    top: -62px;
+    top: -48px;
     right: 131px;
 }
 .fan-right1 .diag-bar{
@@ -363,9 +365,9 @@ span{
     height: 11px;
     background-color: #009fe3;
     position: absolute;
-    top: -46px;
+    top: -39px;
     right: 125px;
-    transform: rotate(-13deg);
+    /* transform: rotate(-13deg); */
 }
 .fan-right{
     position: absolute;
@@ -376,9 +378,9 @@ span{
     height: 11px;
     background: #ffed00;
     position: absolute;
-    top: 20px;
+    top: 14px;
     right: -302px;
-    transform: rotate(10deg);
+    /* transform: rotate(10deg); */
 }
 .fan-right img{
     position: absolute;
@@ -392,7 +394,7 @@ span{
     height: 11px;
     background-color: #009fe3;
     position: absolute;
-    top: -53px;
+    top: -39px;
     right: 56px;
 }
 .rig-dot-top{
@@ -402,16 +404,16 @@ span{
     background-color: #e74011;
     border: 2px solid black;
     position: absolute;
-    top: -41px;
+    top: -27px;
     left: 133px;
 }
 .div-rig-yellow{
-    width: 30px;
+    width: 65px;
     height: 11px;
     background: #ffed00;
     position: absolute;
-    top: 25px;
-    right: -329px;
+    top: 14px;
+    right: -360px;
 }
 .rig-dot-btm{
     width: 14px;
@@ -427,27 +429,32 @@ span{
 .txt-rig{
     font-size: 16px;
     margin-top: 70px;
-    margin-left: 175px;
+    /* margin-left: 175px; */
     width: 100%;
+    position:absolute;
+    left: 312px;
+    
 }
 .p-txt-mr{
     margin-top: 89px;
-    margin-left: -39px;
+    /* margin-left: -39px; */
     font-size: 20px;
+    position: absolute;
+    left: 330px;
 }
 .p-txt-mr span{
     font-size: 14px;
 }
 .p-tag-top{
     position: absolute;
-    margin-top: -83px;
+    margin-top: -100px;
     margin-left: 120px;
 }
 .mr-ptag{
     position: absolute;
     font-size: 20px;
     margin-left: 131px;
-    margin-top: -108px; 
+    margin-top: -85px; 
 }
 .mr-ptag span{
     font-size: 14px;
@@ -487,4 +494,22 @@ span{
 .one-row{
     display:flex;
     align-items: center;
+}
+.mqtt-reset-btn-con{
+    position: relative;
+}
+.mqtt-reset-btn{
+    border: 3px solid red;
+    border-radius: 5px;
+    text-align: center;    
+    padding: 5px;
+    cursor: pointer;
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+}
+.mqtt-status-ipt-con{
+    position: relative;
+    border-left: 3px solid black;
 }

@@ -33,7 +33,8 @@ class AuthController extends Controller
 
            // $token = md5(uniqid());
            // User::where('id', Auth::id())->update(['token' => $token]);   
-            Session::put('email', $req->email);         
+            Session::put('email', $req->email);       
+            Session::put('lang', 'en');  
             return redirect('/user/dashboard');
         }
   

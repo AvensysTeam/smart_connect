@@ -9,7 +9,7 @@
 <!-- Navigation -->
 <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
     <!-- Dashboard -->
-    <li class="menu-item">
+    <!-- <li class="menu-item">
         <a href="#" class="has-chevron" data-toggle="collapse" data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
            <span><i class="material-icons fs-16">dashboard</i>Dashboard </span>
          </a>
@@ -20,7 +20,7 @@
           <li> <a href="pages/dashboard/cryptocurrency.html">Crypto Currency</a> </li>
           <li> <a href="pages/dashboard/web-analytics.html">Web Analytics</a> </li>
         </ul>
-    </li>
+    </li> -->
     <!-- /Dashboard -->
     <li class="menu-item">
       <a href="/user/mqtt">

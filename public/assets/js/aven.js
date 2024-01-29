@@ -6,6 +6,7 @@ $(document).ready(function(){
     //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     //     }
     // });
+    var thirddot;
 
     $.ajax({
         url: 'https://api.avensys-srl.com/api/rispondi?topic=polling&address=a0001',
@@ -13,13 +14,15 @@ $(document).ready(function(){
         // data: postData,
         success: function (data) {
             console.log(data);
-
+            
+            thirddot = data.data.CO2Level;
+            processThirdDot(thirddot);
         },
         error: function (error) {
             console.error('Error getting Customers request:', error);
         }
     }); 
-    
+    console.log("ourside = ", thirddot);
 //============================ for topfan ========================================
     var num1 = 50;
     if(num1 == 0){
@@ -78,16 +81,20 @@ $(document).ready(function(){
         $('.pr2').text(seconddot+"%");
     }
 //============================ for thirddot ========================================
-    var thirddot = 500
-    if(thirddot == 0){
-        $('.third-dot').css('background-color','red');
-        $('.pco1').text(thirddot);
-    }else if(thirddot < 201){
-        $('.third-dot').css('background-color','yellow');
-        $('.pco1').text(thirddot);
-    }else if(thirddot > 200){
-        $('.third-dot').css('background-color','green'); 
-        $('.pco1').text(thirddot);
+    function processThirdDot(thirddot){
+
+        // var thirddot = 500
+        console.log("thirddot = ", thirddot)
+        if(thirddot == 0){
+            $('.third-dot').css('background-color','red');
+            $('.pco1').text(thirddot);
+        }else if(thirddot < 201){
+            $('.third-dot').css('background-color','yellow');
+            $('.pco1').text(thirddot);
+        }else if(thirddot > 200){
+            $('.third-dot').css('background-color','green'); 
+            $('.pco1').text(thirddot);
+        }
     }
 //============================ for forthdot ========================================        
     var forthdot = 250

@@ -1,145 +1,56 @@
 @extends('layouts.main')
 @section('content')
 
-<!-- Main Content -->
-<main class="body-content">
 
-    <!-- Navigation Bar -->
-    <nav class="navbar ms-navbar">
+    <!-- Body Content Wrapper -->
+    <div class="ms-content-wrapper">
+        <div class="row">
 
-    <div class="ms-aside-toggler ms-toggler pl-0" data-target="#ms-side-nav" data-toggle="slideLeft">
-        <span class="ms-toggler-bar bg-primary"></span>
-        <span class="ms-toggler-bar bg-primary"></span>
-        <span class="ms-toggler-bar bg-primary"></span>
-    </div>
-
-    <div class="logo-sn logo-sm ms-d-block-sm">
-        <a class="pl-0 ml-0 text-center navbar-brand mr-0" href="../dashboard/index.html"><img src="../../assets/img/m-logo-1.png" alt="logo"> </a>
-    </div>
-
-    <ul class="ms-nav-list ms-inline mb-0" id="ms-nav-options">
-        <li class="ms-nav-item ms-search-form pb-0 py-0">
-        <form class="ms-form" method="post">
-            <div class="ms-form-group my-0 mb-0 has-icon fs-14">
-            <input type="search" class="ms-form-input" name="search" placeholder="Search here..." value="">
-            <i class="flaticon-search text-disabled"></i>
+            <div class="col-md-12">
+                <div class="ms-panel">
+                    <div class="ms-panel-header">
+                    <h6>Reference Date</h6>
+                    </div>
+                    <div class="ms-panel-body">
+                        <form>
+                            <input id="datepicker" width="270" />
+                            <ul class="ms-list d-flex">
+                                <li class="ms-list-item pl-0">
+                                <label class="ms-checkbox-wrap">
+                                    <input type="radio" name="workhour_option" value="day" checked>
+                                    <i class="ms-checkbox-check"></i>
+                                </label>
+                                <span> Day </span>
+                                </li>
+                                <li class="ms-list-item">
+                                <label class="ms-checkbox-wrap">
+                                    <input type="radio" name="workhour_option" value="week">
+                                    <i class="ms-checkbox-check"></i>
+                                </label>
+                                <span> Week </span>
+                                </li>
+                                <li class="ms-list-item">
+                                <label class="ms-checkbox-wrap">
+                                    <input type="radio" name="workhour_option" value="month">
+                                    <i class="ms-checkbox-check"></i>
+                                </label>
+                                <span> Month </span>
+                                </li>
+                                <li class="ms-list-item">
+                                <label class="ms-checkbox-wrap">
+                                    <input type="radio" name="workhour_option" value="year"  >
+                                    <i class="ms-checkbox-check"></i>
+                                </label>
+                                <span> Year </span>
+                                </li>
+                            </ul>
+                            <input type="button" class="btn btn-primary d-block w-25" id="btn_view"  value="View"/>
+                        </form>
+                    </div>
+                </div>
             </div>
-        </form>
-        </li>
-        <li class="ms-nav-item dropdown">
-        <a href="#" class="text-disabled ms-has-notification" id="mailDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-mail"></i></a>
-        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="mailDropdown">
-            <li class="dropdown-menu-header">
-            <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Mail</span></h6><span class="badge badge-pill badge-success">3 New</span>
-            </li>
-            <li class="dropdown-divider"></li>
-            <li class="ms-scrollable ms-dropdown-list">
-            <a class="media p-2" href="#">
-                <div class="ms-chat-status ms-status-offline ms-chat-img mr-2 align-self-center">
-                <img src="../../assets/img/project-management/people-5.jpg" class="ms-img-round" alt="people">
-                </div>
-                <div class="media-body">
-                <span>Hey man, looking forward to your new project.</span>
-                <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 30 seconds ago</p>
-                </div>
-            </a>
-            <a class="media p-2" href="#">
-                <div class="ms-chat-status ms-status-online ms-chat-img mr-2 align-self-center">
-                <img src="../../assets/img/project-management/people-12.jpg" class="ms-img-round" alt="people">
-                </div>
-                <div class="media-body">
-                <span>Dear John, I was told you bought mylo! Send me your feedback</span>
-                <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 28 minutes ago</p>
-                </div>
-            </a>
-            <a class="media p-2" href="#">
-                <div class="ms-chat-status ms-status-offline ms-chat-img mr-2 align-self-center">
-                <img src="../../assets/img/project-management/people-12.jpg" class="ms-img-round" alt="people">
-                </div>
-                <div class="media-body">
-                <span>How many people are we inviting to the dashboard?</span>
-                <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 6 hours ago</p>
-                </div>
-            </a>
-            </li>
-            <li class="dropdown-divider"></li>
-            <li class="dropdown-menu-footer text-center">
-            <a href="../apps/email.html">Go to Inbox</a>
-            </li>
-        </ul>
-        </li>
-        <li class="ms-nav-item dropdown">
-        <a href="#" class="text-disabled ms-has-notification" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-bell"></i></a>
-        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationDropdown">
-            <li class="dropdown-menu-header">
-            <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Notifications</span></h6><span class="badge badge-pill badge-info">4 New</span>
-            </li>
-            <li class="dropdown-divider"></li>
-            <li class="ms-scrollable ms-dropdown-list">
-            <a class="media p-2" href="#">
-                <div class="media-body">
-                <span>12 ways to improve your crypto dashboard</span>
-                <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 30 seconds ago</p>
-                </div>
-            </a>
-            <a class="media p-2" href="#">
-                <div class="media-body">
-                <span>You have newly registered users</span>
-                <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 45 minutes ago</p>
-                </div>
-            </a>
-            <a class="media p-2" href="#">
-                <div class="media-body">
-                <span>Your account was logged in from an unauthorized IP</span>
-                <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 2 hours ago</p>
-                </div>
-            </a>
-            <a class="media p-2" href="#">
-                <div class="media-body">
-                <span>An application form has been submitted</span>
-                <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 1 day ago</p>
-                </div>
-            </a>
-            </li>
-            <li class="dropdown-divider"></li>
-            <li class="dropdown-menu-footer text-center">
-            <a href="#">View all Notifications</a>
-            </li>
-        </ul>
-        </li>
-        <li class="ms-nav-item">
-        <a href="#" class="text-disabled ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight"><i class="flaticon-menu"></i></a>
-        </li>
-        <li class="ms-nav-item ms-nav-user dropdown">
-        <a href="#"  id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img class="ms-user-img ms-img-round float-right" src="../../assets/img/project-management/people-5.jpg" alt="people"> </a>
-        <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
-            <li class="dropdown-menu-header">
-            <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Welcome, Anny Farisha</span></h6>
-            </li>
-            <li class="dropdown-divider"></li>
-            <li class="ms-dropdown-list">
-            <a class="media fs-14 p-2" href="../prebuilt-pages/user-profile.html"> <span><i class="flaticon-user mr-2"></i> Profile</span> </a>
-            <a class="media fs-14 p-2" href="../apps/email.html"> <span><i class="flaticon-mail mr-2"></i> Inbox</span> <span class="badge badge-pill badge-info">3</span> </a>
-            <a class="media fs-14 p-2" href="../prebuilt-pages/user-profile.html"> <span><i class="flaticon-gear mr-2"></i> Account Settings</span> </a>
-            </li>
-            <li class="dropdown-divider"></li>
-            <li class="dropdown-menu-footer">
-            <a class="media fs-14 p-2" href="../prebuilt-pages/lock-screen.html"> <span><i class="flaticon-security mr-2"></i> Lock</span> </a>
-            </li>
-            <li class="dropdown-menu-footer">
-            <a class="media fs-14 p-2" href="../prebuilt-pages/default-login.html"> <span><i class="flaticon-shut-down mr-2"></i> Logout</span> </a>
-            </li>
-        </ul>
-        </li>
-    </ul>
-
-    <div class="ms-toggler ms-d-block-sm pr-0 ms-nav-toggler" data-toggle="slideDown" data-target="#ms-nav-options">
-        <span class="ms-toggler-bar bg-primary"></span>
-        <span class="ms-toggler-bar bg-primary"></span>
-        <span class="ms-toggler-bar bg-primary"></span>
+        </div>
     </div>
-
-    </nav>
 
     <!-- Body Content Wrapper -->
     <div class="ms-content-wrapper">
@@ -152,50 +63,143 @@
                     </div>
                     <div class="ms-panel-body">
                         <!-- <canvas id="workinghours-chart"></canvas> -->
-                        <canvas id="bar-chart"></canvas>
+                        <!-- <canvas id="bar-chart"></canvas> -->
+                        <div id="working-hours-line-chart"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-</main>
 <script>
-    
-    var barChart = new Chart(document.getElementById("bar-chart"), {
-        type: 'bar',
-        data: {
-            labels: ["2024", "2025", "2026", "2027"],
-            datasets: [
-            {
-                label: "Working hours",
-                backgroundColor: ["#ED7D31", "#ED7D31","#ED7D31","#ED7D31"],
-                data: [380,1300,1400,0]
-            }
-            ]
-        },
-        options: {
-            legend: { display: false },
-            title: {
-            display: false,
-            text: 'Workin hours'
-            },
-            scales: {
-            yAxes: [{
-                ticks: {
-                fontColor: '#5c6dc0',
-                },
-            }],
-            xAxes: [{
-                ticks: {
-                fontColor: '#5c6dc0',
-                }
-            }]
+$(document).ready(function () {
+
+    $('#datepicker').datepicker({
+            uiLibrary: 'bootstrap'
+        });
+    var selectedValue = "day"; 
+    yeardata =  [
+        { year: '2024', value: 380 },
+        { year: '2025', value: 1300 },
+        { year: '2026', value: 1400 },
+        { year: '2027', value: 234 }
+    ];
+    monthdata = [
+        { month: '1', value: 380 },
+        { month: '2', value: 1300 },
+        { month: '3', value: 233 },
+        { month: '4', value: 1110 },
+        { month: '5', value: 333 },
+        { month: '6', value: 1700 },
+        { month: '7', value: 1210 },
+        { month: '8', value: 1300 },
+        { month: '9', value: 1400 },
+        { month: '10', value: 534 },
+        { month: '11', value: 465 },
+        { month: '12', value: 1530 }
+    ];
+    weekdata = [
+        { week: '1', value: 455 },
+        { week: '2', value: 1344 },
+        { week: '3', value: 546 },
+        { week: '4', value: 53 },
+        { week: '5', value: 333 },
+        { week: '6', value: 644 },
+        { week: '7', value: 533 } ,
+    ];
+    daydata = [
+        { day: '1', value: 380 },
+        { day: '2', value: 1300 },
+        { day: '3', value: 233 },
+        { day: '4', value: 1110 },
+        { day: '5', value: 333 },
+        { day: '6', value: 1700 },
+        { day: '7', value: 1210 },
+        { day: '8', value: 1300 },
+        { day: '9', value: 1400 },
+        { day: '10', value: 534 },
+        { day: '11', value: 465 },
+        { day: '12', value: 1530 },
+        { day: '13', value: 465 },
+        { day: '14', value: 1530 },
+        { day: '15', value: 465 },
+        { day: '16', value: 1530 },
+        { day: '17', value: 465 },
+        { day: '18', value: 1530 },
+        { day: '19', value: 465 },
+        { day: '20', value: 1530 },
+        { day: '21', value: 465 },
+        { day: '22', value: 1530 },
+        { day: '23', value: 465 },
+        { day: '24', value: 1530 },
+        { day: '25', value: 465 },
+        { day: '26', value: 1530 },
+        { day: '27', value: 465 },
+        { day: '28', value: 1530 },
+        { day: '29', value: 465 },
+        { day: '30', value: 1530 },
+        { day: '31', value: 465 }
+    ];
+    var mychart =  new Morris.Line({
+        element: 'working-hours-line-chart',
+        data:daydata,
+        xkey: 'day',
+        ykeys: ['value'],
+        labels: ['Value']
+    });
+    // (function($){
+    //     'use strict';
+    //     // Line chart
+    // });
+
+    $('input[type="radio"]').change(function () {
+        // Get the value of the selected radio button
+        selectedValue = $('input[name="workhour_option"]:checked').val();
+        console.log(selectedValue)
+    });
+    $("#btn_view").click(function(){
+        $('#working-hours-line-chart').empty();
+        
+        console.log(selectedValue);
+        if(selectedValue == "year"){
+            mychart = new Morris.Line({
+                element: 'working-hours-line-chart',
+                data: yeardata,
+                xkey: 'year',
+                ykeys: ['value'],
+                labels: ['Value' ]
+            });
         }
+        if(selectedValue == "month"){
+            mychart = new Morris.Line({
+                element: 'working-hours-line-chart',
+                data: monthdata,
+                xkey: 'month',
+                ykeys: ['value'],
+                labels: ['Value']
+            });
+        }
+        if(selectedValue == "week"){
+            mychart = new Morris.Line({
+                element: 'working-hours-line-chart',
+                data: weekdata,
+                xkey: 'week',
+                ykeys: ['value'],
+                labels: ['Value']
+            });
+        }
+        if(selectedValue == "day"){
+            mychart = new Morris.Line({
+                element: 'working-hours-line-chart',
+                data: daydata,
+                xkey: 'day',
+                ykeys: ['value'],
+                labels: ['Value']
+            });
         }
     });
-
-
-</script>
+});
+    
+ </script>
 
 @endsection
