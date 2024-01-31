@@ -22,15 +22,15 @@
         </ul>
     </li> -->
     <!-- /Dashboard -->
-    <li class="menu-item">
+    <!-- <li class="menu-item">
       <a href="/user/mqtt">
         <span><i class="material-icons fs-16">widgets</i>MQTT4</span>
       </a>
-    </li>
+    </li> -->
 
     <li class="menu-item">
         <a href="{{ Route('user.customers') }}">
-          <span><i class="material-icons fs-16">format_paint</i>Customer Manager</span>
+          <span><i class="material-icons fs-16">widgets</i>Smart</span>
         </a>
     </li>
     <li class="menu-item">

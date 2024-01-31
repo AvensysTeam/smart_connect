@@ -6,14 +6,11 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateUsersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+   
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
+
             $table->id();
             $table->string('name');
             $table->string('sms_code')->nullable();
@@ -21,8 +18,11 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('remember_token')->nullable();
-            $table->integer('role_id')->default(0);
+            $table->string('description')->nullable();
+            $table->unsignedInteger('role_id')->default(2);
+            $table->unsignedInteger('level_up')->default(0); // 0 mean top level (can be admin or level1 user, not level2)
             $table->timestamps();
+
         });
     }
 

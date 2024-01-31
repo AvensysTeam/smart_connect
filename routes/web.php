@@ -25,12 +25,14 @@ Route::post('/signup', [AuthController::class, 'signup'])->name('user.signup');
 Route::group(['prefix' => 'user', 'middleware' => ['auth']], function(){
     
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.dashboard');
-    Route::get('/mqtt', [CustomerController::class, 'showMQTT']);
+    Route::get('/mqtt/{serial?}', [CustomerController::class, 'showMQTT']);
     Route::get('/customers', [CustomerController::class, 'index'])->name("user.customers");
-    Route::get('/customer', [CustomerController::class, 'showCustomer'])->name("user.showCustomer");
-    Route::get('/customer_unit/:customer_id', [CustomerController::class, 'showUnit']);
+    Route::get('/customer/{customer_id?}', [CustomerController::class, 'showByCustomer'])->name("user.showCustomer");
+    Route::get('/unit/{unit_id?}', [CustomerController::class, 'showByUnit']);
     Route::get('/showChart', [CustomerController::class, 'showChart']);
     Route::get('/languages/change/{lang?}', [DashboardController::class, 'changeLanguage']);
+    Route::post('/change_activate', [CustomerController::class, 'changeActivation']);
+    
 
     Route::get('/signout', [AuthController::class, 'signout'])->name('user.signout');
 

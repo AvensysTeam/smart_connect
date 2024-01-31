@@ -22,7 +22,7 @@
                     </div>
                     <div class="ms-panel-body">
                     <div class="table-responsive">
-                        <table id="customers_table" class="table table-hover w-100"></table>
+                        <table id="customer_table" class="table table-hover w-100"></table>
                     </div>
                     </div>
                 </div>
@@ -31,53 +31,87 @@
     </div>
 
 <script>
+
+    // var dataArray = @json($rows);
+    var dataArray = {!! json_encode($rows) !!};
+    console.log("dataArray = ", dataArray);
+    var dataSet = [];
+    if(dataArray.length > 0){
+        dataArray.forEach(function(data){
+            let clsName = "";
+            var row = "";
+            if(data.activation == 0){
+                clsName = "class='customer" + data.id + " disabled-link'";
+                row = ["<a href='/user/unit/" + data.unit_id + "'" + clsName + ">" + data.unit_title + "</a>", 
+                    "<a href='/user/mqtt/" + data.serial_number + "'" + clsName+">"+data.serial_number+"</a>", 
+                    data.project,
+                    "<div class='activation_btn clicked' id='activateBtn"+ data.id +"'></div>" ];
+            }
+            if(data.activation == 1){
+                clsName = "class='customer" + data.id + "'";
+                row = ["<a href='/user/unit/" + data.unit_id + "'"+clsName+">"+data.unit_title+"</a>", 
+                    "<a href='/user/mqtt/" + data.serial_number + "'" +  clsName+">"+data.serial_number+"</a>", 
+                    data.project,
+                    "<div class='activation_btn' id='activateBtn"+ data.id +"'></div>" ];
+            }    
+    
+            dataSet.push(row);
+    
+        });
+    }
+
+
     (function($) {
         'use strict';
-
-        var dataSet = [
-            [ "<a href='/user/customer/1'>Vs 127</a>", "<a href='/user/customer/1'>2334346643</a>", "<div class='activation_btn clicked'></div>" ],
-            [ "<a href='/user/customer/1'>Vs 47</a>", "<a href='/user/customer/1'>2334346644</a>", "<div class='activation_btn'></div>" ],
-            [ "<a href='/user/customer/1'>Vs 47</a>", "<a href='/user/customer/1'>2334346645</a>", "<div class='activation_btn clicked'></div>" ],
-          
-        ];
-
-        var tableOne = $('#customers_table').DataTable( {
+         $('#customers_table').empty();
+        var tableOne = $('#customer_table').DataTable( {
             data: dataSet,
             columns: [
             { title: "Unit" },
             { title: "Serial Number" },
+            { title: "Project" },
             { title: "Smart Activation" },
             ],
         });
 
-        $(".activation_btn").click(function() {
-            $(this).toggleClass("clicked");
-            let btn = $(this);
-            let curValue = btn.text();
-            let newValue = curValue == 'a' ? 'b' : 'a';
-            btn.text(newValue);            
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
         });
 
-        // Use the CSRF token in the headers of your Ajax request
-        // $.ajaxSetup({
-        //     headers: {
-        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        //     }
-        // });
-
-        // $.ajax({
-        //     url: '/user/customers',
-        //     method: 'POST',
-        //     // data: postData,
-        //     success: function (data) {
-        //         console.log(data);
-
-        //     },
-        //     error: function (error) {
-        //         console.error('Error getting Customers request:', error);
-        //     }
-        // });
-
+    
+        $(".activation_btn").click(function() {
+            // let btn = $(this);
+            // let curValue = btn.val();
+            // let newValue = curValue == 0 ? 1 : 0;
+            // btn.val(newValue);   
+            let id = $(this).attr('id');
+            id = id.replace('activateBtn','');
+            let actBtn = $('#activateBtn' + id);
+            let alink  = $(".customer" + id);
+            $.ajax({
+                url: '/user/change_activate',
+                method: 'POST',
+                data: {id: id},
+                context: actBtn,
+                success: function(res){
+                    $(this).toggleClass("clicked");
+                    console.log("switch success = ", res.status);
+                    if(res.status == '0'){
+                        actBtn.addClass("clicked");                        
+                        alink.addClass('disabled-link');
+                    } else if(res.status == '1'){
+                        actBtn.removeClass("clicked");
+                        alink.removeClass('disabled-link');
+                    }   
+                    // toggleActivation(id, res.status);
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            })
+        });
 
     })(jQuery);
 

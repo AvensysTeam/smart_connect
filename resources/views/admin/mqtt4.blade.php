@@ -10,7 +10,7 @@
                 <div class="col-md-4">
                   
                     <div class="row">
-                        <img src="{{ asset('/assets/images/device.png') }}" style="width: 350px;"/>
+                        <img src="{{ asset('storage/uploads/price/'.$imgpath) }}" style="width: 350px;"/>
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -24,8 +24,8 @@
                     </thead>
                     <tbody>
                         <tr>
-                        <td>Vs 127</td>
-                        <td>2334346643</td>
+                        <td>{{ $unit }}</td>
+                        <td>{{ $serial_number }}</td>
                         <td>2024: 340</td><td>2025:</td><td>2026:</td><td>2027:</td><td>2028:</td>
                         <td><a href="/user/showChart" style="border: 1px solid rgb(237,125,49); border-radius:5px;padding: 5px;">Click here to see the graph</a></td>
                         </tr>                        
@@ -220,13 +220,13 @@
                                 <tbody>
                                     <tr>
                                     <td>Supply</td>
-                                    <td class="one-row"><input type="text" class="form-control form-control-sm" value="88" style="width:70px;"></td>
+                                    <td class="one-row"><input type="text" class="form-control form-control-sm input_hundred" value="88" style="width:70px;"></td>
                                     <td></td>
-                                    <td class="one-row"><input type="text" class="form-control form-control-sm" value="2300" style="width:70px;"> rpm</td>
+                                    <td class="one-row"><input type="text" class="form-control form-control-sm " value="2300" style="width:70px;"> rpm</td>
                                     </tr>
                                     <tr>
                                     <td>Exhaust</td>
-                                    <td class="one-row"><input type="text" class="form-control form-control-sm" value="77" style="width:70px;"></td>
+                                    <td class="one-row"><input type="text" class="form-control form-control-sm input_hundred" value="77" style="width:70px;"></td>
                                     <td></td>
                                     <td class="one-row"><input type="text" class="form-control form-control-sm" value="2500" style="width:70px;"> rpm</td>
                                     </tr>                           
@@ -244,7 +244,7 @@
                                 <tbody>
                                     <tr>
                                     <td>Status</td>
-                                    <td><input type="text" class="form-control form-control-sm" value="0" style="width:70px;"></td>
+                                    <td><input type="text" class="form-control form-control-sm" value="0" style="width:70px;" id="binaryInput"></td>
                                     </tr>                        
                                 </tbody>
                             </table>
@@ -261,7 +261,7 @@
                                 <tbody>
                                     <tr>
                                         <td>Fresh</td>
-                                        <td rowspan="2" class="mqtt-status-ipt-con"><input type="text" class="form-control form-control-sm" value="70" style="width:70px;"></td>
+                                        <td rowspan="2" class="mqtt-status-ipt-con"><input type="text" id="fresh_return_ipt" class="form-control form-control-sm input_hundred" value="70" style="width:70px;"></td>
                                         <td rowspan='2' class="mqtt-reset-btn-con"><div class="mqtt-reset-btn">Reset</div></td>
                                     </tr>                     
                                     <tr>
@@ -331,6 +331,8 @@
 
 
 <script>
+    
+    
     (function($) {
         'use strict';
 
@@ -346,7 +348,7 @@
             { title: "Unit" },
             { title: "Serial number" },
             { title: "Working hours" },
-            ],
+            ], 
         });
 
         $(".activation_btn").click(function() {
@@ -355,6 +357,29 @@
             let curValue = btn.text();
             let newValue = curValue == 'a' ? 'b' : 'a';
             btn.text(newValue);            
+        });
+
+        document.getElementById('binaryInput').addEventListener('input', function () {
+        let inputValue = this.value;
+
+        // Check if the input is either 0 or 1
+        if (inputValue !== '0' && inputValue !== '1') {
+            // If not, set the input value to an empty string
+            this.value = '';
+            // alert('Please enter only 0 or 1.');
+        }
+        });
+        var input_hundreds = document.querySelectorAll('.input_hundred');
+        input_hundreds.forEach(function(input){
+            input.addEventListener('input', function(){
+                let inputValue = parseInt(this.value, 10);
+                if (inputValue < 0) { this.value = '0'; }
+                if(inputValue > 100){ this.value = '100' }
+
+            });
+        });
+        $(".mqtt-reset-btn").click(function(){
+            $("#fresh_return_ipt").val('0');
         });
 
         // Use the CSRF token in the headers of your Ajax request

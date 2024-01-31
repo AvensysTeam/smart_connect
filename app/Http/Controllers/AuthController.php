@@ -35,6 +35,7 @@ class AuthController extends Controller
            // User::where('id', Auth::id())->update(['token' => $token]);   
             Session::put('email', $req->email);       
             Session::put('lang', 'en');  
+            Session::put('user_id', Auth::id());
             return redirect('/user/dashboard');
         }
   
@@ -57,7 +58,8 @@ class AuthController extends Controller
             'name' => $fullname,
             'email' => $req->email,
             'password' => Hash::make($req->password),
-            'created_at' => date('Y-m-d H:i:s')
+            'created_at' => date('Y-m-d H:i:s'),
+            'level_up' => 1
         ];
         $check = User::create($data);   
         if($check)
@@ -67,10 +69,11 @@ class AuthController extends Controller
     }
 
 
-    public function logout(Request $req){
+    public function signout(Request $request){
         auth('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect("/login");
+        return view('/auth/login');
+        // return redirect("/login");
     }
 }

@@ -16,10 +16,6 @@ class CreateUnitsTable extends Migration
         Schema::create('units', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('serial_number');
-            $table->string('project');
-            $table->boolean('activation');
-            $table->integer('customer_id');
             $table->timestamps();
         });
     }

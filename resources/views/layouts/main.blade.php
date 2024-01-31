@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Mylo Dashboard</title>
+  <title>Acer Smart</title>
   <!-- Iconic Fonts -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('assets/iconic-fonts/flat-icons/flaticon.css')}}">
@@ -88,9 +88,7 @@
         </div>
 
         <ul class="ms-nav-list ms-inline mb-0" id="ms-nav-options">
-            <li class="ms-nav-item dropdown">
-              <span style="margin-right:-50px;">Language</span>
-            </li>
+          
             <li class="ms-nav-item dropdown">
                 @foreach($langs as $item)
                 <a href="#" class="text-disabled" id="mailDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -108,27 +106,6 @@
                 </ul>
             </li>
           
-            <li class="ms-nav-item ms-nav-user dropdown">
-            <a href="#"  id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img class="ms-user-img ms-img-round float-right" src="../../assets/img/project-management/people-5.jpg" alt="people"> </a>
-            <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
-                <li class="dropdown-menu-header">
-                <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Welcome, Anny Farisha</span></h6>
-                </li>
-                <li class="dropdown-divider"></li>
-                <li class="ms-dropdown-list">
-                <a class="media fs-14 p-2" href="../prebuilt-pages/user-profile.html"> <span><i class="flaticon-user mr-2"></i> Profile</span> </a>
-                <a class="media fs-14 p-2" href="../apps/email.html"> <span><i class="flaticon-mail mr-2"></i> Inbox</span> <span class="badge badge-pill badge-info">3</span> </a>
-                <a class="media fs-14 p-2" href="../prebuilt-pages/user-profile.html"> <span><i class="flaticon-gear mr-2"></i> Account Settings</span> </a>
-                </li>
-                <li class="dropdown-divider"></li>
-                <li class="dropdown-menu-footer">
-                <a class="media fs-14 p-2" href="../prebuilt-pages/lock-screen.html"> <span><i class="flaticon-security mr-2"></i> Lock</span> </a>
-                </li>
-                <li class="dropdown-menu-footer">
-                <a class="media fs-14 p-2" href="../prebuilt-pages/default-login.html"> <span><i class="flaticon-shut-down mr-2"></i> Logout</span> </a>
-                </li>
-            </ul>
-            </li>
         </ul>
 
         <div class="ms-toggler ms-d-block-sm pr-0 ms-nav-toggler" data-toggle="slideDown" data-target="#ms-nav-options">
