@@ -6,23 +6,30 @@ $(document).ready(function(){
     //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     //     }
     // });
-    var thirddot;
-
-    $.ajax({
-        url: 'https://api.avensys-srl.com/api/rispondi?topic=polling&address=a0001',
-        method: 'GET',
-        // data: postData,
-        success: function (data) {
-            console.log(data);
+    
+    // var thirddot;
+    // $.ajax({
+    //     url: 'https://api.avensys-srl.com/api/rispondi?topic=polling&address=a0001',
+    //     method: 'GET',
+    //     // data: postData,
+    //     success: function (data) {
+    //         console.log(data);
             
-            thirddot = data.data.CO2Level;
-            processThirdDot(thirddot);
-        },
-        error: function (error) {
-            console.error('Error getting Customers request:', error);
-        }
-    }); 
+    //         thirddot = data.data.CO2Level;
+    //         processThirdDot(thirddot);
+    //         processForthDot(data.data.RHLevel);
+    //         processFifthDot(data.data.VOCLevel);
+    //         processTemps(data.data.MeasTemp1F, data.data.MeasTemp2R, data.data.MeasTemp3S, data.data.MeasTemp4E);
+    //     },
+    //     error: function (error) {
+    //         console.error('Error getting Customers request:', error);
+    //     }
+    // }); 
+
+    var dataArray = @json($dev);
+
     console.log("ourside = ", thirddot);
+    // processTemps(233,234,334,443);
 //============================ for topfan ========================================
     var num1 = 50;
     if(num1 == 0){
@@ -81,6 +88,12 @@ $(document).ready(function(){
         $('.pr2').text(seconddot+"%");
     }
 //============================ for thirddot ========================================
+    function processTemps(temp1, temp2, temp3, temp4){
+        $('.temp1').text(temp1/10 + '°C');
+        $('.temp2').text(temp2/10 + '°C');
+        $('.temp3').text(temp3/10 + '°C');
+        $('.temp4').text(temp4/10 + '°C');        
+    }
     function processThirdDot(thirddot){
 
         // var thirddot = 500
@@ -97,28 +110,32 @@ $(document).ready(function(){
         }
     }
 //============================ for forthdot ========================================        
-    var forthdot = 250
-    if(forthdot == 0){
-        $('.forth-dot').css('background-color','red');
-        $('.pco2').text(forthdot);
-    }else if(forthdot < 201){
-        $('.forth-dot').css('background-color','yellow');
-        $('.pco2').text(forthdot);
-    }else if(forthdot > 200){
-        $('.forth-dot').css('background-color','green'); 
-        $('.pco2').text(forthdot);
+    function processForthDot(forthdot){
+
+        if(forthdot == 0){
+            $('.forth-dot').css('background-color','red');
+            $('.pco2').text(forthdot);
+        }else if(forthdot < 201){
+            $('.forth-dot').css('background-color','yellow');
+            $('.pco2').text(forthdot);
+        }else if(forthdot > 200){
+            $('.forth-dot').css('background-color','green'); 
+            $('.pco2').text(forthdot);
+        }
     }
 //============================ for fifthdot ========================================        
-    var fifthdot = 250
-    if(fifthdot == 0){
-        $('.fifth-dot').css('background-color','red');
-        $('.pco3').text(fifthdot);
-    }else if(fifthdot < 201){
-        $('.fifth-dot').css('background-color','yellow');
-        $('.pco3').text(fifthdot);
-    }else if(fifthdot > 200){
-        $('.fifth-dot').css('background-color','green'); 
-        $('.pco3').text(fifthdot);
+    function processFifthDot(fifthdot){
+
+        if(fifthdot == 0){
+            $('.fifth-dot').css('background-color','red');
+            $('.pco3').text(fifthdot);
+        }else if(fifthdot < 201){
+            $('.fifth-dot').css('background-color','yellow');
+            $('.pco3').text(fifthdot);
+        }else if(fifthdot > 200){
+            $('.fifth-dot').css('background-color','green'); 
+            $('.pco3').text(fifthdot);
+        }
     }
 
    var firstco2 = 1

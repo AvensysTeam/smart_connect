@@ -43,7 +43,7 @@
     var startImagePathleft = "{{ asset('assets/images/fan_l.gif') }}";
     var startImagePathright = "{{ asset('assets/images/fan_r.gif') }}";
   </script>
-  <script src="{{asset('assets/js/aven.js')}}"></script>
+  <!-- <script src="{{asset('assets/js/aven.js')}}"></script> -->
 
   <!-- datepicker -->
   <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
@@ -88,7 +88,9 @@
         </div>
 
         <ul class="ms-nav-list ms-inline mb-0" id="ms-nav-options">
-          
+            <li class="ms-nav-item dropdown">
+              <div class="one_page_back_btn"><img class="panel_save_btn_img" src="{{asset('assets/images/one_page_back.png')}}"></div>
+            </li>
             <li class="ms-nav-item dropdown">
                 @foreach($langs as $item)
                 <a href="#" class="text-disabled" id="mailDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -120,6 +122,9 @@
       
   </main>
   <script>
+    $(".one_page_back_btn").click(function(){
+       window.history.back();
+    });
     $(".langSel").on("click", function() {
         var code = $(this).data('code');
         window.location.href = "/user/languages/change/"+code;

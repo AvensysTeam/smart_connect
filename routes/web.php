@@ -33,7 +33,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function(){
     Route::get('/languages/change/{lang?}', [DashboardController::class, 'changeLanguage']);
     Route::post('/change_activate', [CustomerController::class, 'changeActivation']);
     
-
+    Route::get('/back', [CustomerController::class, 'back']);
     Route::get('/signout', [AuthController::class, 'signout'])->name('user.signout');
 
 });

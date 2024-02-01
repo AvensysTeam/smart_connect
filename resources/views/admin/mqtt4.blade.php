@@ -10,7 +10,7 @@
                 <div class="col-md-4">
                   
                     <div class="row">
-                        <img src="{{ asset('storage/uploads/price/'.$imgpath) }}" style="width: 350px;"/>
+                        <img src="{{ asset('storage/uploads/immaginisito/'.$imgpath) }}" style="width: 350px;"/>
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -27,7 +27,7 @@
                         <td>{{ $unit }}</td>
                         <td>{{ $serial_number }}</td>
                         <td>2024: 340</td><td>2025:</td><td>2026:</td><td>2027:</td><td>2028:</td>
-                        <td><a href="/user/showChart" style="border: 1px solid rgb(237,125,49); border-radius:5px;padding: 5px;">Click here to see the graph</a></td>
+                        <td><a href="/user/showChart" style="display:flex; text-align: center;border: 1px solid rgb(237,125,49); border-radius:5px;padding: 5px;">Click here to see the graph</a></td>
                         </tr>                        
                     </tbody>
                     </table>
@@ -204,6 +204,7 @@
             <!-- </div> -->
             <div style="width: 100%; text-align: center; color: whtie;font-size: 22px;">Settable parameters</div>
             <div class="ms-panel" style="border: 1px solid rgb(229,233,241); border-radius: 30px; padding: 20px;">
+                <div class="panel_save_btn invisible"><img class="panel_save_btn_img" src="{{asset('assets/images/btn_confirm.png')}}"></div>        
             <div class="ms-panel-body">
                 <div class="row" >
 
@@ -222,13 +223,13 @@
                                     <td>Supply</td>
                                     <td class="one-row"><input type="text" class="form-control form-control-sm input_hundred" value="88" style="width:70px;"></td>
                                     <td></td>
-                                    <td class="one-row"><input type="text" class="form-control form-control-sm " value="2300" style="width:70px;"> rpm</td>
+                                    <td class="one-row"><input type="text" class="form-control form-control-sm value_ipt" value="2300" style="width:70px;"> rpm</td>
                                     </tr>
                                     <tr>
                                     <td>Exhaust</td>
                                     <td class="one-row"><input type="text" class="form-control form-control-sm input_hundred" value="77" style="width:70px;"></td>
                                     <td></td>
-                                    <td class="one-row"><input type="text" class="form-control form-control-sm" value="2500" style="width:70px;"> rpm</td>
+                                    <td class="one-row"><input type="text" class="form-control form-control-sm value_ipt" value="2500" style="width:70px;"> rpm</td>
                                     </tr>                           
                                 </tbody>
                             </table>
@@ -244,7 +245,7 @@
                                 <tbody>
                                     <tr>
                                     <td>Status</td>
-                                    <td><input type="text" class="form-control form-control-sm" value="0" style="width:70px;" id="binaryInput"></td>
+                                    <td><input type="text" class="form-control form-control-sm value_ipt" value="0" style="width:70px;" id="binaryInput"></td>
                                     </tr>                        
                                 </tbody>
                             </table>
@@ -271,59 +272,404 @@
                             </table>
                         </div>
                         <div class="col-md-1" style="display: flex; align-items: center;justify-content:center; color:white;">
-                            <div style="border: 1px solid rgb(229,233,241);
-                                    border-radius: 5px; padding: 5px; 
-                                    background: rgb(0,176,80);
-                                    display:flex; align-items:center;justify-content:center;
-                                    width: 70px; height: 70px;
-                                    cursor: pointer;
-                                    text-align: center;
-                                    ">
-                                Unit {{ $unitON ? "ON" : "OFF"}}
+                            <div class="unit_on_off">
+                          
                             </div>
                         </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-
-                        <table class="table table-hover thead-primary">
-                            <thead>
-                                <tr>
-                                <th scope="col">Fan</th>
-                                <th scope="col" colspan="5">Monday</th>
-                                <th scope="col" colspan="5" >Tuesday</th>
-                                <th scope="col" colspan="5" >Wednesday</th>
-                                <th scope="col" colspan="5">Thirsday</th>
-                                <th scope="col" colspan="5" >Friday</th>
-                                <th scope="col" colspan="5" >Saturday</th>
-                                <th scope="col" colspan="5" >Sunday</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Time</td>
-                                    <td>12:00</td><td>14:00</td><td>15:00</td><td>18:00</td><td>12:00</td>
-                                    <td></td><td></td><td></td><td></td><td></td>
-                                    <td></td><td></td><td></td><td></td><td></td>
-                                    <td></td><td></td><td></td><td></td><td></td>
-                                    <td></td><td></td><td></td><td></td><td></td>
-                                    <td></td><td></td><td></td><td></td><td></td>
-                                    <td></td><td></td><td></td><td></td><td></td>                               
-                                </tr>      
-                                <tr>
-                                    <td>Speed</td>
-                                    <td>20%</td><td>50%</td><td>70%</td><td>20%</td><td>1400</td>
-                                    <td></td><td></td><td></td><td></td><td></td>
-                                    <td></td><td></td><td></td><td></td><td></td>
-                                    <td></td><td></td><td></td><td></td><td></td>
-                                    <td></td><td></td><td></td><td></td><td></td>
-                                    <td></td><td></td><td></td><td></td><td></td>
-                                    <td></td><td></td><td></td><td></td><td></td>                               
-                                </tr>                     
-                            </tbody>
-                        </table>
-
-                    </div>
+                    
+                        <ul class="nav nav-tabs d-flex nav-justified " role="tablist">
+                            <li role="presentation" ><a href="#tab13" aria-controls="tab13" class="active" role="tab" data-toggle="tab">Monday</a></li>
+                            <li role="presentation" ><a href="#tab14" aria-controls="tab14" role="tab" data-toggle="tab">Tuesday </a></li>
+                            <li role="presentation" ><a href="#tab15" aria-controls="tab15" role="tab" data-toggle="tab">Wednesday </a></li>
+                            <li role="presentation" ><a href="#tab15" aria-controls="tab16" role="tab" data-toggle="tab">Thirsday </a></li>
+                            <li role="presentation" ><a href="#tab15" aria-controls="tab17" role="tab" data-toggle="tab">Friday </a></li>
+                            <li role="presentation" ><a href="#tab15" aria-controls="tab18" role="tab" data-toggle="tab">Saturday </a></li>
+                            <li role="presentation" ><a href="#tab15" aria-controls="tab19" role="tab" data-toggle="tab">Sunday </a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active show fade in" id="tab13">
+                                <table class="table table-hover thead-primary">
+                                    
+                                    <tbody>
+                                        <tr>
+                                            <td>Time</td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                                
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                                
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                                
+                                                                      
+                                        </tr>      
+                                        <tr>
+                                            <td>Speed</td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                        </tr>                     
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab14">
+                            <table class="table table-hover thead-primary">
+                                    
+                                    <tbody>
+                                        <tr>
+                                            <td>Time</td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                                
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                                
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                                
+                                                                      
+                                        </tr>      
+                                        <tr>
+                                            <td>Speed</td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                        </tr>                     
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab15">
+                                <table class="table table-hover thead-primary">
+                                    
+                                    <tbody>
+                                        <tr>
+                                            <td>Time</td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                                
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                                
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                                
+                                                                      
+                                        </tr>      
+                                        <tr>
+                                            <td>Speed</td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                        </tr>                     
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab16">
+                                <table class="table table-hover thead-primary">
+                                    
+                                    <tbody>
+                                        <tr>
+                                            <td>Time</td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                                
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                                
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                                
+                                                                      
+                                        </tr>      
+                                        <tr>
+                                            <td>Speed</td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                        </tr>                     
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab17">
+                                <table class="table table-hover thead-primary">
+                                    
+                                    <tbody>
+                                        <tr>
+                                            <td>Time</td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                                
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                                
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                                
+                                                                      
+                                        </tr>      
+                                        <tr>
+                                            <td>Speed</td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                        </tr>                     
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab18">
+                                <table class="table table-hover thead-primary">
+                                    
+                                    <tbody>
+                                        <tr>
+                                            <td>Time</td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                                
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                                
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                                
+                                                                      
+                                        </tr>      
+                                        <tr>
+                                            <td>Speed</td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                        </tr>                     
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab19">
+                                <table class="table table-hover thead-primary">
+                                    
+                                    <tbody>
+                                        <tr>
+                                            <td>Time</td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                                
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                                
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                            <td><select class="form-control" id="exampleSelect" style="width: 45px; padding: 1px;"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></td>
+                                                
+                                                                      
+                                        </tr>      
+                                        <tr>
+                                            <td>Speed</td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                            <td><div  class="hori-align"><input type="text" class="form-control form-control-sm input_hundred" value="25" style="width:35px;"><span>%</span></div></td>
+                                                                 
+                                        </tr>                     
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
                 </div>
             </div>
                                 
@@ -335,6 +681,7 @@
     
     (function($) {
         'use strict';
+        $(".unit_on_off").text("Unit ON");
 
         var dataSet = [
             [ "<a href='/user/customer'>Customer 1</a>", "<a href='/user/customer'>Vs 127</a>", "<a href='/user/customer'>2334346643</a>", "<div class='activation_btn clicked'></div>" ],
@@ -359,15 +706,25 @@
             btn.text(newValue);            
         });
 
+        $(".unit_on_off").click(function(){
+            $(this).toggleClass("clicked");
+            let btn = $(this);
+            let curValue = btn.text();
+            let newValue = curValue == "Unit ON" ? "Unit OFF" : "Unit ON";
+            btn.text(newValue); 
+        });
+
         document.getElementById('binaryInput').addEventListener('input', function () {
         let inputValue = this.value;
 
-        // Check if the input is either 0 or 1
-        if (inputValue !== '0' && inputValue !== '1') {
-            // If not, set the input value to an empty string
-            this.value = '';
-            // alert('Please enter only 0 or 1.');
-        }
+            // Check if the input is either 0 or 1
+            if (inputValue !== '0' && inputValue !== '1') {
+                // If not, set the input value to an empty string
+                this.value = '';
+                // alert('Please enter only 0 or 1.');
+            }
+            $(".panel_save_btn").removeClass('invisible');
+            $(".panel_save_btn").addClass('visible');
         });
         var input_hundreds = document.querySelectorAll('.input_hundred');
         input_hundreds.forEach(function(input){
@@ -375,11 +732,30 @@
                 let inputValue = parseInt(this.value, 10);
                 if (inputValue < 0) { this.value = '0'; }
                 if(inputValue > 100){ this.value = '100' }
-
+                
+                
+                $(".panel_save_btn").removeClass('invisible');
+                $(".panel_save_btn").addClass('visible');
+            });
+        });
+        var input_values = document.querySelectorAll('.value_ipt');
+        input_values.forEach(function(input){
+            input.addEventListener('input', function(){
+                // let inputValue = parseInt(this.value, 10);
+                // if (inputValue < 0) { this.value = '0'; }
+                // if(inputValue > 100){ this.value = '100' }
+                
+                
+                $(".panel_save_btn").removeClass('invisible');
+                $(".panel_save_btn").addClass('visible');
             });
         });
         $(".mqtt-reset-btn").click(function(){
-            $("#fresh_return_ipt").val('0');
+            $("#fresh_return_ipt").val(0)
+        });
+        $(".panel_save_btn").click(function(){
+            $(this).removeClass("visible");
+            $(this).addClass("invisible");
         });
 
         // Use the CSRF token in the headers of your Ajax request
@@ -401,6 +777,324 @@
         //         console.error('Error getting Customers request:', error);
         //     }
         // });
+
+        //manage devices
+        var dataArray = @json($dev);
+        console.log("ourside = ", dataArray.CO2Level);
+        processThirdDot(dataArray.CO2Level);
+        processForthDot(dataArray.RHLevel);
+        processFifthDot(dataArray.VOCLevel);
+        processTemps(dataArray.MeasTemp1F, dataArray.MeasTemp2R, dataArray.MeasTemp3S, dataArray.MeasTemp4E);
+        // processTemps(233,234,334,443);
+        //============================ for topfan ========================================
+        var num1 = 50;
+        if(num1 == 0){
+            $('.dot-fan-one').css('background-color','red');
+            $('.tfan').attr('src', stopImagePathleft);
+            $('.m3h').text(" "+num1);
+        }else if(num1 < 300){
+            $('.dot-fan-one').css('background-color','yellow');
+            $('.tfan').attr('src', startImagePathleft);
+            $('.m3h').text(" "+num1);
+        }else if(num1 > 300){
+            $('.dot-fan-one').css('background-color','green');
+            $('.tfan').attr('src', startImagePathleft);
+            $('.m3h').text(" "+num1);
+        }
+
+        //============================ for bottomfan ========================================
+        var num2 = 0;
+
+        if(num2 == 0){
+            $('.dot-fan-two').css('background-color','red');
+            $('.bottomfan').attr('src', stopImagePathright);
+            $('.m3h2').text(" "+num2);
+        }else if(num2 < 501){
+            $('.dot-fan-two').css('background-color','yellow');
+            $('.bottomfan').attr('src', startImagePathright);
+            $('.m3h2').text(" "+num2);
+        }else if(num2 > 500){
+            $('.dot-fan-two').css('background-color','green');
+            $('.bottomfan').attr('src', startImagePathright);
+            $('.m3h2').text(" "+num2);
+        }
+        //============================ for firstdot ========================================
+
+        var firstdot = 70
+        if(firstdot == 0){
+            $('.first-dot').css('background-color','red');
+            $('.pr1').text(firstdot+"%");
+        }else if(firstdot < 71){
+            $('.first-dot').css('background-color','yellow');
+            $('.pr1').text(firstdot+"%");
+        }else if(firstdot > 70){
+            $('.first-dot').css('background-color','green'); 
+            $('.pr1').text(firstdot+"%");
+        }
+        //============================ for seconddot ========================================
+        var seconddot = 60
+        if(seconddot == 0){
+            $('.second-dot').css('background-color','red');
+            $('.pr2').text(seconddot+"%");
+        }else if(seconddot < 61){
+            $('.second-dot').css('background-color','yellow');
+            $('.pr2').text(seconddot+"%");
+        }else if(seconddot > 60){
+            $('.second-dot').css('background-color','green'); 
+            $('.pr2').text(seconddot+"%");
+        }
+        //============================ for thirddot ========================================
+        function processTemps(temp1, temp2, temp3, temp4){
+            $('.temp1').text(temp1/10 + '°C');
+            $('.temp2').text(temp2/10 + '°C');
+            $('.temp3').text(temp3/10 + '°C');
+            $('.temp4').text(temp4/10 + '°C');        
+        }
+        function processThirdDot(thirddot){
+
+            // var thirddot = 500
+            console.log("thirddot = ", thirddot)
+            if(thirddot == 0){
+                $('.third-dot').css('background-color','red');
+                $('.pco1').text(thirddot);
+            }else if(thirddot < 201){
+                $('.third-dot').css('background-color','yellow');
+                $('.pco1').text(thirddot);
+            }else if(thirddot > 200){
+                $('.third-dot').css('background-color','green'); 
+                $('.pco1').text(thirddot);
+            }
+        }
+        //============================ for forthdot ========================================        
+        function processForthDot(forthdot){
+
+            if(forthdot == 0){
+                $('.forth-dot').css('background-color','red');
+                $('.pco2').text(forthdot);
+            }else if(forthdot < 201){
+                $('.forth-dot').css('background-color','yellow');
+                $('.pco2').text(forthdot);
+            }else if(forthdot > 200){
+                $('.forth-dot').css('background-color','green'); 
+                $('.pco2').text(forthdot);
+            }
+        }
+        //============================ for fifthdot ========================================        
+        function processFifthDot(fifthdot){
+
+            if(fifthdot == 0){
+                $('.fifth-dot').css('background-color','red');
+                $('.pco3').text(fifthdot);
+            }else if(fifthdot < 201){
+                $('.fifth-dot').css('background-color','yellow');
+                $('.pco3').text(fifthdot);
+            }else if(fifthdot > 200){
+                $('.fifth-dot').css('background-color','green'); 
+                $('.pco3').text(fifthdot);
+            }
+        }
+
+        var firstco2 = 1
+        if(firstco2==0){
+        $('.first-co2').hide();
+        $('.pco1').hide();
+        $('.third-dot').hide();
+        }else{
+            $('.first-co2').show();
+            $('.pco1').show();
+            $('.third-dot').show();
+        }
+
+        var secondco2 = 1
+        if(secondco2==0){
+        $('.second-co2').hide();
+        $('.pco2').hide();
+        $('.forth-dot').hide();
+        }else{
+            $('.second-co2').show();
+            $('.pco2').show();
+            $('.forth-dot').show();
+        }
+        
+        var thirdco2 = 1
+        if(thirdco2==0){
+        $('.third-co2').hide();
+        $('.pco3').hide();
+        $('.fifth-dot').hide();
+        }else{
+            $('.third-co2').show();
+            $('.pco3').show();
+            $('.fifth-dot').show();
+        }
+
+        var cir1 = 50;
+
+        if(cir1 == 0){
+            $('.cirtst').css('background-color','red');
+            $('.htext').text(cir1);
+        }else if(cir1 < 200){
+            $('.cirtst').css('background-color','yellow');
+            $('.htext').text(cir1);
+        }else if(cir1 > 199){
+            $('.cirtst').css('background-color','green'); 
+            $('.htext').text(cir1);
+        }
+
+        var cir2 = 200;
+
+        if(cir2 == 0){
+            $('.cirtfd').css('background-color','red');
+            $('.dxtext').text(cir2);
+        }else if(cir2 < 200){
+            $('.cirtfd').css('background-color','yellow');
+            $('.dxtext').text(cir2);
+        }else if(cir2 > 199){
+            $('.cirtfd').css('background-color','green'); 
+            $('.dxtext').text(cir2);
+        }
+
+        var cir3 = 200;
+
+        if(cir3 == 0){
+            $('.cirtfl').css('background-color','red');
+            $('.ehtext').text(cir3);
+        }else if(cir3 < 200){
+            $('.cirtfl').css('background-color','yellow');
+            $('.ehtext').text(cir3);
+        }else if(cir3 > 199){
+            $('.cirtfl').css('background-color','green'); 
+            $('.ehtext').text(cir3);
+        }
+
+        var cir4 = 200;
+
+        if(cir4 == 0){
+            $('.cirteh').css('background-color','red');
+            $('.htextt').text(cir4);;
+        }else if(cir4 < 200){
+            $('.cirteh').css('background-color','yellow');
+            $('.htextt').text(cir4);
+        }else if(cir4 > 199){
+            $('.cirteh').css('background-color','green'); 
+            $('.htextt').text(cir4);
+        }
+
+        var cir5 = 200;
+
+        if(cir5 == 0){
+            $('.cirted').css('background-color','red');
+            $('.dxtextt').text(cir5);
+        }else if(cir5 < 200){
+            $('.cirted').css('background-color','yellow');
+            $('.dxtextt').text(cir5);
+        }else if(cir5 > 199){
+            $('.cirted').css('background-color','green'); 
+            $('.dxtextt').text(cir5);
+        }
+
+        var cir6 = 200;
+
+        if(cir6 == 0){
+            $('.cirtel').css('background-color','red');
+            $('.ehtextt').text(cir6);
+        }else if(cir6 < 200){
+            $('.cirtel').css('background-color','yellow');
+            $('.ehtextt').text(cir6);
+        }else if(cir6 > 199){
+            $('.cirtel').css('background-color','green'); 
+            $('.ehtextt').text(cir6);
+        }
+
+        var cir7 = 200;
+
+        if(cir7 == 0){
+            $('.cirtfh').css('background-color','red');
+            $('.htextth').text(cir7);
+        }else if(cir7 < 200){
+            $('.cirtfh').css('background-color','yellow');
+            $('.htextth').text(cir7);
+        }else if(cir7 > 199){
+            $('.cirtfh').css('background-color','green'); 
+            $('.htextth').text(cir7);
+        }
+
+        var cir8 = 200;
+
+        if(cir8 == 0){
+            $('.cirtsh').css('background-color','red');
+            $('.dxtextth').text(cir8);
+        }else if(cir8 < 200){
+            $('.cirtsh').css('background-color','yellow');
+            $('.dxtextth').text(cir8);
+        }else if(cir8 > 199){
+            $('.cirtsh').css('background-color','green'); 
+            $('.dxtextth').text(cir8);
+        }
+
+        var cir9 = 200;
+
+        if(cir9 == 0){
+            $('.cirtsd').css('background-color','red');
+            $('.ehtextth').text(cir9);
+        }else if(cir9 < 200){
+            $('.cirtsd').css('background-color','yellow');
+            $('.ehtextth').text(cir9);
+        }else if(cir9 > 199){
+            $('.cirtsd').css('background-color','green'); 
+            $('.ehtextth').text(cir9);
+        }
+
+        var cir10 = 200;
+
+        if(cir10 == 0){
+            $('.cirtsl').css('background-color','red');
+            $('.trefotext').text(cir10);
+        }else if(cir10 < 200){
+            $('.cirtsl').css('background-color','yellow');
+            $('.trefotext').text(cir10);
+        }else if(cir10 > 199){
+            $('.cirtsl').css('background-color','green'); 
+            $('.trefotext').text(cir10);
+        }
+
+        var cir11 = 200;
+
+        if(cir11 == 0){
+            $('.cirtre-a').css('background-color','red');
+            $('.trefttext').text(cir11);
+        }else if(cir11 < 200){
+            $('.cirtre-a').css('background-color','yellow');
+            $('.trefttext').text(cir11);
+        }else if(cir11 > 199){
+            $('.cirtre-a').css('background-color','green'); 
+            $('.trefttext').text(cir11);
+        }
+
+        var cir12 = 200;
+
+        if(cir12 == 0){
+            $('.cirtre-b').css('background-color','red');
+            $('.trefthtext').text(cir12);
+        }else if(cir12 < 200){
+            $('.cirtre-b').css('background-color','yellow');
+            $('.trefthtext').text(cir12);
+        }else if(cir12 > 199){
+            $('.cirtre-b').css('background-color','green'); 
+            $('.trefthtext').text(cir12);
+        }
+
+        var cir13 = 200;
+
+        if(cir13 == 0){
+            $('.cirtre-c').css('background-color','red');
+            $('.trefftext').text(cir13);
+        }else if(cir13 < 200){
+            $('.cirtre-c').css('background-color','yellow');
+            $('.trefftext').text(cir13);
+        }else if(cir13 > 199){
+            $('.cirtre-c').css('background-color','green'); 
+            $('.trefftext').text(cir13);
+        }
 
 
     })(jQuery);

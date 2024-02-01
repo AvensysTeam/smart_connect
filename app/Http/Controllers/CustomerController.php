@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use App\Language;
 use App\Aven;
 use App\Customer;
@@ -158,9 +159,10 @@ class CustomerController extends Controller
         $unit = DB::table('avens')->join('units', 'avens.unit_id','=','units.id')
             ->select('avens.serial_number','units.title')
             ->where('avens.serial_number', $serial)->first();
+        $dev = DB::table('devices')->where('serial', $serial)->first();
         $imgpath = DB::table('devices')->where('serial', $serial)->first()->imgpath ;
         return view('admin/mqtt4', ['showDevice' => $showDevice, 'unitON' => $unitON, 'langs' => $languages,
-            'serial_number' => $serial, 'unit' => $unit->title, 'imgpath' => $imgpath]);
+            'serial_number' => $serial, 'unit' => $unit->title, 'imgpath' => $imgpath, 'dev' => $dev]);
     }
 
     public function showChart(){
@@ -214,5 +216,10 @@ class CustomerController extends Controller
             // return view('admin/customers',['langs' => $languages, 'rows' => $rows]);
             return $rows;
         }
+    }
+
+    public function back(){
+        // var_dump("back");die();
+        return Redirect::back();
     }
 }
