@@ -21,7 +21,7 @@
 
 </head>
 
-<body class="ms-body ms-dark-theme ms-logged-out">
+<body class="ms-body ms-logged-out">
 
   @yield('content')
 

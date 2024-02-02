@@ -1,8 +1,8 @@
  <!-- Sidebar Navigation Left -->
- <aside id="ms-side-nav" class="side-nav fixed ms-aside-scrollable ms-aside-left">
+ <aside id="ms-side-nav" class="side-nav fixed ms-aside-scrollable ms-aside-left" style="background-color: rgb(255 255 255);">
 
 <!-- Logo -->
-<div class="logo-sn ms-d-block-lg">
+<div class="logo-sn ms-d-block-lg" style="background-color: rgb(255,255,255);">
   <a class="pl-0 ml-0 text-center" href="pages/dashboard/index.html"> <img src="{{asset('assets/img/logo.png')}}" alt="logo"> </a>
 </div>
 
@@ -30,12 +30,17 @@
 
     <li class="menu-item">
         <a href="{{ Route('user.customers') }}">
-          <span><i class="material-icons fs-16">widgets</i>Smart</span>
+          <span  style="color:black;">Smart</span>
+        </a>
+    </li>
+    <li class="menu-item">
+        <a href="{{ Route('user.customers') }}">
+          <span  style="color:black;">Smart Connect</span>
         </a>
     </li>
     <li class="menu-item">
         <a href="{{ Route('user.signout') }}">
-          <span><i class="flaticon-shut-down fs-16"></i>Logout</span>
+          <span><img src="{{ asset('assets/img/logout.png') }}" style="height:29px;"></img></span>
         </a>
     </li>
     <!-- Form Elements -->
