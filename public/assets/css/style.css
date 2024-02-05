@@ -958,6 +958,9 @@ body:not(.ms-aside-left-open) .ms-aside-toggler .ms-toggler-bar{
 .side-nav ul li.menu-item {
   padding: 0;
 }
+.side-nav ul li.menu-item a{
+  font-size: 20px;
+}
 .side-nav .menu-item a {
   position: relative;
   display: block;

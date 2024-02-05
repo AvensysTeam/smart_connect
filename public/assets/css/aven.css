@@ -564,3 +564,7 @@ span{
     display: flex;
     align-items: center;
 }
+
+.speed_per .hori-align{
+    margin-left: 10px;
+}
