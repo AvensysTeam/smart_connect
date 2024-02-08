@@ -66,17 +66,10 @@
                   <input class="form-check-input" type="checkbox" value="">
                   <i class="ms-checkbox-check"></i>
                 </label>
-                <span> Read and accept the terms of use </span>
-                <label class="d-block mt-3"><a href="/terms" class="btn-link">Terms and services</a></label>
-              </div>
-              <div class="form-group">
-                <label class="ms-checkbox-wrap">
-                  <input class="form-check-input" type="checkbox" value="">
-                  <i class="ms-checkbox-check"></i>
-                </label>
                 <span> Remember me </span>
               </div>
               <button class="btn btn-primary mt-4 d-block w-100" type="submit">Sign In</button>
+              <p class="mb-0 mt-3 text-center">Don't have an account? <a class="btn-link" href="/signup">Create Account</a> </p>
 <!--               
               <p class="mb-0 mt-3 text-center">Don't have an account? <a class="btn-link" href="/signup">Create Account</a> </p> -->
             </form>

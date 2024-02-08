@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends("layouts.main")
 @section('content')
 
     
@@ -19,6 +19,7 @@
                         <tr>
                         <th scope="col">Unit</th>
                         <th scope="col">Serial number</th>
+                        <th scope="col">Location</th>                        
                         <th scope="col" colspan="6">Working hours</th>
                         </tr>
                     </thead>
@@ -26,7 +27,9 @@
                         <tr>
                         <td>{{ $unit }}</td>
                         <td>{{ $serial_number }}</td>
-                        <td>2024: 340</td><td>2025:</td><td>2026:</td><td>2027:</td><td>2028:</td>
+                        <td><input type="text" class="form-control form-control-sm" name="location"></td>
+
+                        <!-- <td>2024: 340</td><td>2025:</td><td>2026:</td><td>2027:</td><td>2028:</td> -->
                         <td><a href="/user/showChart" style="display:flex; text-align: center;border: 1px solid rgb(237,125,49); border-radius:5px;padding: 5px;">Click here to see the graph</a></td>
                         </tr>                        
                     </tbody>
@@ -588,8 +591,8 @@
         input_hundreds.forEach(function(input){
             input.addEventListener('input', function(){
                 let inputValue = parseInt(this.value, 10);
-                if (inputValue < 0) { this.value = '0'; }
-                if(inputValue > 100){ this.value = '100' }
+                if(inputValue < 0) { this.value = '0'; }
+                if(inputValue > 100){ this.value = '100'; }
                 
                 
                 $(".panel_save_btn").removeClass('invisible');

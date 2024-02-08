@@ -12,15 +12,24 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
 
             $table->id();
-            $table->string('name');
-            $table->string('sms_code')->nullable();
+            $table->string('company_name');
+            $table->string('VAT')->nullable();
+            $table->unsignedInteger('legal_form');
+            $table->unsignedInteger('sector_activity');
+            $table->unsignedInteger('company_size');
+            $table->string('legal_address');
+            $table->string('operational_address');
+            $table->string('contact_person_name');
+            $table->string('position');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('mobile_phone')->unique();
+            $table->string('username');
             $table->string('password');
-            $table->string('remember_token')->nullable();
-            $table->string('description')->nullable();
-            $table->unsignedInteger('role_id')->default(2);
-            $table->unsignedInteger('level_up')->default(0); // 0 mean top level (can be admin or level1 user, not level2)
+            $table->string('accept_terms');  // 'on' : agreed, 'off': disagreed
+            $table->string('accept_privacy');
+            // 3: initial level , 2 : lowest level, 1: management level, 10: admin
+            $table->unsignedInteger('role_id')->default(3); 
+            $table->unsignedInteger('level_up')->default(0); // parent id
             $table->timestamps();
 
         });

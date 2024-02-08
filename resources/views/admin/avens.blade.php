@@ -22,14 +22,13 @@
                     </div>
                     <div class="ms-panel-body">
                     <div class="table-responsive">
-                        <table id="customers_table" class="table table-hover w-100"></table>
+                        <table id="avens_table" class="table table-hover w-100"></table>
                     </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 
 <script>
     var dataArray = @json($rows);
@@ -40,17 +39,17 @@
         var row = "";
         if(data.activation == 0){
             clsName = "class='customer" + data.id + " disabled-link'";
-            row = ["<a href='/user/customer/" + data.customer_id + "'"+clsName+">"+ data.title+"</a>", 
+            row = ["<a href='/user/customer/" + data.customer_id + "'"+clsName+">"+ data.company_name+"</a>", 
                 "<a href='/user/unit/" + data.unit_id + "'" + clsName + ">" + data.unit_title + "</a>", 
                 "<a href='/user/mqtt/" + data.serial_number + "'" + clsName+">"+data.serial_number+"</a>", 
-                "<div class='activation_btn clicked' id='activateBtn"+ data.id +"'>'1'</div>" ];
+                "<div class='activation_btn clicked' id='activateBtn"+ data.id +"'>1</div>" ];
         }
         if(data.activation == 1){
             clsName = "class='customer" + data.id + "'";
-            row = ["<a href='/user/customer/" + data.customer_id + "'"+clsName+">"+ data.title+"</a>", 
+            row = ["<a href='/user/customer/" + data.customer_id + "'"+clsName+">"+ data.company_name+"</a>", 
                 "<a href='/user/unit/" + data.unit_id + "'"+clsName+">"+data.unit_title+"</a>", 
                 "<a href='/user/mqtt/" + data.serial_number + "'" + clsName+">"+data.serial_number+"</a>", 
-                "<div class='activation_btn' id='activateBtn"+ data.id +"'>'2'</div>" ];
+                "<div class='activation_btn unclicked' id='activateBtn"+ data.id +"'>2</div>" ];
         }    
 
         dataSet.push(row);
@@ -61,14 +60,14 @@
     (function($) {
         'use strict';
         
-        // var dataSet = [
-        //     [ "<a href='/user/customer'>Customer 1</a>", "<a href='/user/customer'>Vs 127</a>", "<a href='/user/mqtt'>2334346643</a>", "<div class='activation_btn clicked'>1</div>" ],
-        //     [ "<a href='/user/customer'>Customer 1</a>", "<a href='/user/customer'>Vs 47</a>", "<a href='/user/mqtt'>2334346644</a>", "<div class='activation_btn'>0</div>" ],
-        //     [ "<a href='/user/customer'>Customer 1</a>", "<a href='/user/customer'>Vs 47</a>", "<a href='/user/mqtt'>2334346645</a>", "<div class='activation_btn clicked'>1</div>" ],
-        //     [ "<a href='/user/customer'>Customer 2</a>", "<a href='/user/customer'>FS 127</a>", "<a href='/user/mqtt'>2334346643</a>", "<div class='activation_btn clicked'>1</div>" ],
-        //     [ "<a href='/user/customer'>Customer 3</a>", "<a href='/user/customer'>HB 32</a>", "<a href='/user/mqtt'>2335469950</a>", "<div class='activation_btn'>0</div>"],      
-        // ];
-        
+        // $(".clicked").each(function() {
+        //     $(this).text("1");
+        // });
+
+        // $(".unclicked").each(function() {
+        //     $(this).text("2");
+        // });
+
         // Use the CSRF token in the headers of your Ajax request
         $.ajaxSetup({
             headers: {
@@ -76,7 +75,7 @@
             }
         });
 
-        var tableOne = $('#customers_table').DataTable( {
+        var tableOne = $('#avens_table').DataTable( {
             data: dataSet,
             columns: [
             { title: "Title" },
@@ -104,14 +103,19 @@
                     $(this).toggleClass("clicked");
                     console.log("switch success = ", res.status);
                     if(res.status == '0'){
+                        actBtn.removeClass("unclicked");
                         actBtn.addClass("clicked");                        
                         alink.addClass('disabled-link');
-                        actBtn.html(1);
-                        // $(".clicked")
+                        actBtn.text("1");
+                        
+                        // actBtn.parent().empty().text("<div class='activation_btn clicked' id='activateBtn"+ id +"'>1</div>");
                     } else if(res.status == '1'){
                         actBtn.removeClass("clicked");
+                        actBtn.addClass("unclicked");
                         alink.removeClass('disabled-link');
-                        actBtn.html(2);
+                        actBtn.text("2");
+                        
+                        // actBtn.parent().empty().html("<div class='activation_btn' id='activateBtn"+ id +"'>2</div>");
                     }   
                     // toggleActivation(id, res.status);
                 },

@@ -40,14 +40,8 @@ class AuthController extends Controller
 
             if(Auth::user()->role_id == 10){
                 Session::put("isAdmin", true);
-                Session::put("isEditor", false);
             } else {
                 Session::put("isAdmin", false);
-                $rows = DB::table("editors")->where('level2_id', Auth::id())->get();
-                if(count($rows) > 0 )
-                    Session::put("isEditor", true);
-                else 
-                    Session::put('isEditor', false);
             }
 
             return redirect('/user/dashboard');

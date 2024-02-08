@@ -27,17 +27,43 @@
         <span><i class="material-icons fs-16">widgets</i>MQTT4</span>
       </a>
     </li> -->
-
+    @if(session('isAdmin'))
     <li class="menu-item">
         <a href="{{ Route('user.customers') }}">
+          <span  style="color:black;">Customers</span>
+        </a>
+    </li>
+    @endif
+
+    <li class="menu-item">
+        <a href="{{ Route('user.avens') }}">
           <span  style="color:black;">Smart</span>
         </a>
     </li>
     <li class="menu-item">
-        <a href="{{ Route('user.customers') }}">
+        <a href="{{ Route('user.avens') }}">
           <span  style="color:black;">Smart Connect</span>
         </a>
     </li>
+    @if( session('isAdmin') )
+      <li class="menu-item">
+          <a href="{{ Route('admin.show.language') }}">
+            <span  style="color:black;">Language</span>
+          </a>
+      </li>
+    @elseif(Auth::user()->role_id == 1)
+      <li class="menu-item">
+          <a href="{{ Route('level1.edit.auth') }}">
+            <span  style="color:black;">Language</span>
+          </a>
+      </li>
+    @elseif(session('isEditor'))
+      <li class="menu-item">
+          <a href="{{ Route('level2.edit.words') }}">
+            <span  style="color:black;">Language</span>
+          </a>
+      </li>
+    @endif
     <li class="menu-item">
         <a href="{{ Route('user.signout') }}">
           <span><img src="{{ asset('assets/img/logout.png') }}" style="height:40px;"></img></span>
