@@ -37,6 +37,11 @@ class CustomerController extends Controller
             return response()->json(['status' => 1]);
         }
     }
+
+    public function changeLocation(Request $req){
+        $serial = DB::table('devices')->where('serial', $req->serial)->update(['location' =>  $req->location]);
+        return response()->json(['status' => true]);
+    }
     
     public function showByCustomer(Request $req) {
     
@@ -259,5 +264,31 @@ class CustomerController extends Controller
             DB::table("users")->where('id', $customer_id)->update(['role_id' => $new_level, 'level_up' => $new_level_up_id]);
             return redirect()->route('user.customers');
         }
+    }
+
+    public function adminShowPictures(Request $req){
+        $rows = DB::table('devices')->get();
+        return view("/admin/show_pictures", ['langs' => $this->languages,'rows' => $rows]);
+    }
+
+    public function adminUploadPicture(Request $request){
+
+        $request->validate([
+            'file' => 'required|file|mimes:jpeg,png|max:2048', // Example: Allow only JPEG and PNG files up to 2MB
+        ]);
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            // Generate a unique file name
+            $filename = uniqid() . '_' . $file->getClientOriginalName();
+            // Move the uploaded file to the storage directory
+            $file->storeAs('/public/uploads/immaginisito', $filename);
+            
+            DB::table("devices")->where('serial', $request->serial)->update(['imgpath' => $filename]);
+            return Redirect::back();
+        } else {
+            // return 'No file uploaded.';
+        }
+
     }
 }

@@ -348,7 +348,7 @@ span{
     border-radius: 8px;
     background-color: #3fa535;
     border: 2px solid black;margin: auto;margin-bottom: 5px;}
-.circle-p{font-size: 12px; height: 28px; line-height: normal;}
+.circle-p{font-size: 11px; height: 28px; line-height: normal;}
 .m-tag-chng{
     font-size: 20px;
     margin-right: 80px;
@@ -504,7 +504,7 @@ span{
 .mqtt-reset-btn-con{
     position: relative;
 }
-.mqtt-reset-btn{
+.mqtt-reset-btn , .save_word_btn{
     border: 3px solid rgb(53,127,250);
     border-radius: 5px;
     text-align: center;    
@@ -518,6 +518,12 @@ span{
 .mqtt-reset-btn:hover{
     background-color: rgb(53,127,250);
     color: white;
+}
+.save_word_btn .visible{
+    display: block;
+}
+.save_word_btn .invisible{
+    display: none;
 }
 .mqtt-status-ipt-con{
     position: relative;
@@ -555,6 +561,15 @@ span{
 .panel_save_btn .invisible{
     display: none;
 }
+.panel_save_location_btn{
+    cursor: pointer;
+}
+.panel_save_location_btn .visible{
+    display: block;
+}
+.panel_save_location_btn .invisible{
+    display: none;
+}
 .panel_save_btn_img{
     width: 45px; height: 45px;
 }
@@ -567,4 +582,9 @@ span{
 
 .speed_per .hori-align{
     margin-left: 10px;
+}
+
+.upload-img-btn{
+    border: 1px solid rgb(237,125,49);
+    border-radius: 5px; padding:5px;
 }

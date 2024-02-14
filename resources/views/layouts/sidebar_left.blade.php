@@ -37,30 +37,34 @@
 
     <li class="menu-item">
         <a href="{{ Route('user.avens') }}">
-          <span  style="color:black;">Smart</span>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="{{ Route('user.avens') }}">
           <span  style="color:black;">Smart Connect</span>
         </a>
     </li>
     @if( session('isAdmin') )
-      <li class="menu-item">
-          <a href="{{ Route('admin.show.language') }}">
-            <span  style="color:black;">Language</span>
-          </a>
-      </li>
+    <li class="menu-item">
+        <a href="#" class="has-chevron" data-toggle="collapse" data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
+           <span style="color: #000;">General Setting </span>
+         </a>
+        <ul id="dashboard" class="collapse" aria-labelledby="dashboard" data-parent="#side-nav-accordion"  style="background: #fff !important;">
+          <li> <a href="{{ Route('admin.show.language') }}" style="color:#000;">Languages</a> </li>
+          <li> <a href="{{ Route('admin.show.pictures') }}" style="color:#000;">Pictures</a> </li>
+
+        </ul>
+    </li>
     @elseif(Auth::user()->role_id == 1)
-      <li class="menu-item">
-          <a href="{{ Route('level1.edit.auth') }}">
-            <span  style="color:black;">Language</span>
-          </a>
-      </li>
+    <li class="menu-item">
+        <a href="#" class="has-chevron" data-toggle="collapse" data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
+           <span style="color: #000;">General Setting </span>
+         </a>
+        <ul id="dashboard" class="collapse" aria-labelledby="dashboard" data-parent="#side-nav-accordion">
+          <li> <a href="{{ Route('level1.edit.auth') }}" style="color:#000;">Languages</a> </li>
+          <li> <a href="{{ Route('admin.show.pictures') }}" style="color:#000;">Pictures</a> </li>
+        </ul>
+    </li>
     @elseif(session('isEditor'))
       <li class="menu-item">
           <a href="{{ Route('level2.edit.words') }}">
-            <span  style="color:black;">Language</span>
+            <span  style="color:black;">Languages</span>
           </a>
       </li>
     @endif

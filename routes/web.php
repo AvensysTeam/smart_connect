@@ -34,10 +34,13 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function(){
     Route::get('/unit/{unit_id?}', [CustomerController::class, 'showByUnit']);
     Route::get('/showChart', [CustomerController::class, 'showChart']);
     Route::post('/change_activate', [CustomerController::class, 'changeActivation']);
+    Route::post('/change_location', [CustomerController::class, 'changeLocation']);
     Route::get('/customers', [CustomerController::class, 'showCustomers'])->name("user.customers");
     Route::get('/admin/edit_level/{customer_id?}', [CustomerController::class, 'adminEditCustomerLevel'])->name("admin.edit.customer_level");
     Route::post('/admin/save_level', [CustomerController::class, 'adminSaveCustomerLevel'])->name("admin.save.customer_level");
     Route::get('/delete-customer/{customer_id?}', [CustomerController::class, 'deleteCustomer'])->name("user.delete.customer");
+    Route::get("/admin/show/pictures", [CustomerController::class,'adminShowPictures'])->name('admin.show.pictures');
+    Route::post("/admin/upload/picture", [CustomerController::class,'adminUploadPicture']);
     
 
     Route::get('/languages/change/{lang?}', [DashboardController::class, 'changeLanguage']);
@@ -48,7 +51,8 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function(){
     Route::get("/languages/admin/showAll", [LangController::class, 'showAll'])->name('admin.show.language');
     Route::post("/languages/admin/save_new_word", [LangController::class, 'adminUpdateWords'])->name('admin.update.words');
     Route::post("/languages/admin/update_words", [LangController::class, 'adminAddNewWord'])->name('admin.add.newword');
-    
+
+
     
     Route::get('/back', [CustomerController::class, 'back']);
     Route::get('/signout', [AuthController::class, 'signout'])->name('user.signout');

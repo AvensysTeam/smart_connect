@@ -15,6 +15,8 @@ class CreateDevicesTable extends Migration
     {
         Schema::create('devices', function (Blueprint $table) {
             $table->id();
+            $table->string("unit");
+            $table->string("location")->default("");
             $table->string('serial');
             $table->string('imgpath');
             $table->integer('family')->default(-1);

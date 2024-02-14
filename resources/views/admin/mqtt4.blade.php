@@ -9,11 +9,17 @@
             <div class="row">
                 <div class="col-md-4">
                   
-                    <div class="row">
+                    <div class="row" style="justify-content: center;">
                         <img src="{{ asset('storage/uploads/immaginisito/'.$imgpath) }}" style="width: 350px;"/>
+                        <!-- @if(session('isAdmin'))
+                        <div class="upload-img-btn">                            
+                            <a href="/user/upload-img/{{ $serial_number }}">Upload Image</a>
+                        </div>
+                        @endif -->
                     </div>
                 </div>
                 <div class="col-md-8">
+                    <div class="panel_save_location_btn invisible"><img class="panel_save_btn_img" src="{{asset('assets/images/btn_confirm.png')}}"></div>   
                     <table class="table table-hover thead-primary">
                     <thead>
                         <tr>
@@ -27,7 +33,7 @@
                         <tr>
                         <td>{{ $unit }}</td>
                         <td>{{ $serial_number }}</td>
-                        <td><input type="text" class="form-control form-control-sm" name="location"></td>
+                        <td><input type="text" class="form-control form-control-sm" name="location" id="location_ipt" value="{{ $dev->location }}"></td>
 
                         <!-- <td>2024: 340</td><td>2025:</td><td>2026:</td><td>2027:</td><td>2028:</td> -->
                         <td><a href="/user/showChart" style="display:flex; text-align: center;border: 1px solid rgb(237,125,49); border-radius:5px;padding: 5px;">Click here to see the graph</a></td>
@@ -83,7 +89,7 @@
                             <img src="{{asset('assets/images/3devices.png')}}" class="img-3devides dev2  {{ $showDevice ? '': 'hidden_dev' }}"/>
                             <img src="{{asset('assets/images/3devices.png')}}" class="img-3devides dev3  {{ $showDevice ? '': 'hidden_dev' }}"/>
                             <div class="dot-img  {{ $showDevice ? '': 'hidden_dev' }}"></div>
-                            <img src="{{asset('assets/images/custom_bk_off.png')}}" />
+                            <img src="{{asset('assets/images/custom_bk_on.png')}}" />
                             <div class="dot-img-2  {{ $showDevice ? '': 'hidden_dev' }}"></div>
                             <div class="main-cir-dot  {{ $showDevice ? '': 'hidden_dev' }}" style="bottom: 2px;left: 35px;">
                                 <div class="div-circle">
@@ -538,7 +544,7 @@
 
 
 <script>
-    
+    let serial = @json($serial_number);
     
     (function($) {
         'use strict';
@@ -587,6 +593,8 @@
             $(".panel_save_btn").removeClass('invisible');
             $(".panel_save_btn").addClass('visible');
         });
+
+       
         var input_hundreds = document.querySelectorAll('.input_hundred');
         input_hundreds.forEach(function(input){
             input.addEventListener('input', function(){
@@ -650,6 +658,32 @@
         $(".panel_save_btn").click(function(){
             $(this).removeClass("visible");
             $(this).addClass("invisible");
+        });
+
+        document.getElementById('location_ipt').addEventListener('input', function () {
+            let inputValue = this.value;
+            $(".panel_save_location_btn").removeClass('invisible');
+            $(".panel_save_location_btn").addClass('visible');
+        });
+        $(".panel_save_location_btn").click(function(){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            let location = $("#location_ipt").val();
+            $.ajax({
+                url: '/user/change_location',
+                method: 'POST',
+                data: {serial: serial, location: location},
+                success: function(res){
+                    $(".panel_save_location_btn").removeClass('visible');
+                    $(".panel_save_location_btn").addClass('invisible');
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            })
         });
 
         // Use the CSRF token in the headers of your Ajax request

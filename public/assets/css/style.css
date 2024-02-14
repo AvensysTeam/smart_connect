@@ -946,7 +946,7 @@ body:not(.ms-aside-left-open) .ms-aside-toggler .ms-toggler-bar{
 }
 .side-nav .logo-sn,
 .side-nav .menu-item ul {
-  background-color: #34334a;
+  background-color: #fff;
 }
 .side-nav .logo-sn a{
   display: block;
@@ -965,7 +965,7 @@ body:not(.ms-aside-left-open) .ms-aside-toggler .ms-toggler-bar{
   position: relative;
   display: block;
   padding: 15px 0 15px 25px;
-  color: #b8c7ce;
+  color: #000;
   -webkit-transition: 0s;
   transition: 0s;
 }
@@ -982,6 +982,7 @@ body:not(.ms-aside-left-open) .ms-aside-toggler .ms-toggler-bar{
   width: 3px;
   height: 100%;
   background-color: #fff;
+  color: #000;
 }
 .side-nav .menu-item ul li a.active::before{
   left: auto;
