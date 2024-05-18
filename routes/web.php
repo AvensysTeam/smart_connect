@@ -30,6 +30,11 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function(){
     Route::get('/dashboard', [CustomerController::class, 'index']);
     Route::get('/mqtt/{serial?}', [CustomerController::class, 'showMQTT']);
     Route::get('/avens', [CustomerController::class, 'index'])->name("user.avens");
+    // ##############################  table-start  ###########################
+    Route::get('/general', [CustomerController::class, 'general'])->name("user.general");
+    Route::get('/advanced', [CustomerController::class, 'advanced'])->name("user.advanced");
+    Route::get('/modify', [CustomerController::class, 'modify'])->name("user.modify");
+    // ##############################  table-end  #############################
     Route::get('/customer/{customer_id?}', [CustomerController::class, 'showByCustomer'])->name("user.showCustomer");
     Route::get('/unit/{unit_id?}', [CustomerController::class, 'showByUnit']);
     Route::get('/showChart', [CustomerController::class, 'showChart']);

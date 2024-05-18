@@ -18,8 +18,7 @@ class CustomerController extends Controller
     //
     public function index(){
         $languages = Language::all();
-        $rows = $this->getRows();
-        
+        $rows = $this->getRows(); 
         return view('admin/customers', ['langs' => $languages,'rows' => $rows]);
     }
 

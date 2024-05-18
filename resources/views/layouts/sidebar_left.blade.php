@@ -35,6 +35,18 @@
     </li>
     @endif
 
+
+    <li class="menu-item">
+        <a href="#" class="has-chevron" data-toggle="collapse" data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
+           <span style="color: #000;">Data Tables </span>
+         </a>
+        <ul id="dashboard" class="collapse" aria-labelledby="dashboard" data-parent="#side-nav-accordion"  style="background: #fff !important;">
+          <li> <a href="{{ Route('user.general') }}" style="color:#000;">General</a> </li>
+          <li> <a href="{{ Route('user.advanced') }}" style="color:#000;">Advanced</a> </li>
+          <li> <a href="{{ Route('user.modify') }}" style="color:#000;">Non-Modifiable</a> </li>
+
+        </ul>
+    </li>
     <li class="menu-item">
         <a href="{{ Route('user.avens') }}">
           <span  style="color:black;">Smart Connect</span>

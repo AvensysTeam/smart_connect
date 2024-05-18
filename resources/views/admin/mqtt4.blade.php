@@ -33,7 +33,7 @@
                         <tr>
                         <td>{{ $unit }}</td>
                         <td>{{ $serial_number }}</td>
-                        <td><input type="text" class="form-control form-control-sm" name="location" id="location_ipt" value="{{ $dev->location }}"></td>
+                        <td><input type="text" class="form-control form-control-sm" name="location" id="location_ipt" value=""></td>
 
                         <!-- <td>2024: 340</td><td>2025:</td><td>2026:</td><td>2027:</td><td>2028:</td> -->
                         <td><a href="/user/showChart" style="display:flex; text-align: center;border: 1px solid rgb(237,125,49); border-radius:5px;padding: 5px;">Click here to see the graph</a></td>
@@ -695,7 +695,7 @@
 
         // $.ajax({
         //     url: '/user/customers',
-        //     method: 'POST',
+        //     method: 'post',
         //     // data: postData,
         //     success: function (data) {
         //         console.log(data);

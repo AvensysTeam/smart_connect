@@ -19,28 +19,28 @@
       <div class="ms-circle12 ms-child"></div>
     </div>
   </div>
-
+  
   <!-- Overlays -->
   <div class="ms-aside-overlay ms-overlay-left ms-toggler" data-target="#ms-side-nav" data-toggle="slideLeft"></div>
   <div class="ms-aside-overlay ms-overlay-right ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight"></div>
-
   
-
+  
+  
   <!-- Main Content -->
   <main class="body-content">
-
-      <!-- Body Content Wrapper -->
+    
+    <!-- Body Content Wrapper -->
     <div class="ms-content-wrapper ms-auth">
-
+      
       <div class="ms-auth-container">
         <div class="ms-auth-col">
           <div class="ms-auth-bg">
-              <!-- <img src="{{ asset('assets/img/logo.png') }}"/> -->
+            <!-- <img src="{{ asset('assets/img/logo.png') }}"/> -->
           </div>
         </div>
         <div class="ms-auth-col">
           <div class="ms-auth-form">
-            <form method="post" action="{{ Route('user.login') }}">
+            <form  method="post" action="{{ Route('user.login') }}">
               @csrf
               <h1>Login</h1>
               <div class="mb-3">
@@ -72,18 +72,19 @@
               <p class="mb-0 mt-3 text-center">Don't have an account? <a class="btn-link" href="/signup">Create Account</a> </p>
 <!--               
               <p class="mb-0 mt-3 text-center">Don't have an account? <a class="btn-link" href="/signup">Create Account</a> </p> -->
-            </form>
+              
+            </form>            
           </div>
         </div>
       </div>
-
+      
     </div>
-
+    
     <!-- Forgot Password Modal -->
     <div class="modal fade" id="modal-12" tabindex="-1" role="dialog" aria-labelledby="modal-12">
       <div class="modal-dialog modal-dialog-centered modal-min" role="document">
         <div class="modal-content">
-
+          
           <div class="modal-body text-center">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <i class="flaticon-secure-shield d-block"></i>
@@ -97,11 +98,11 @@
               <button type="submit" class="btn btn-primary shadow-none">Reset Password</button>
             </form>
           </div>
-
+          
         </div>
       </div>
     </div>
 
   </main>
+  @endsection
 
-@endsection

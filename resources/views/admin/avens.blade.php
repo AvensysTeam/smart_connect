@@ -31,7 +31,10 @@
     </div>
 
 <script>
+    
     var dataArray = @json($rows);
+
+
     console.log("dataArray = ", dataArray);
     var dataSet = [];
     dataArray.forEach(function(data){

@@ -19,11 +19,12 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('M-favicon.png') }}">
 
+  
 </head>
 
 <body class="ms-body ms-logged-out">
 
-  @yield('content')
+@yield('content')
 
   <!-- SCRIPTS -->
   <!-- Global Required Scripts Start -->

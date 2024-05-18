@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Http;
 use App\Language;
 use App\Aven;
 use App\Customer;
@@ -12,6 +13,7 @@ use App\User;
 use Session; 
 use Auth;
 use DB;
+use GuzzleHttp\Client;
 
 class CustomerController extends Controller
 {
@@ -112,7 +114,7 @@ class CustomerController extends Controller
             $user_ids = [];
             foreach($users as $user){
                 array_push($user_ids, $user->id);
-            }            
+            }
             $rows = DB::table('avens')->join('users', 'avens.customer_id', '=', 'users.id')
             ->join('units', 'avens.unit_id', '=', 'units.id')
             ->select('avens.id','users.company_name',  'users.id As customer_id', 'units.title As unit_title',
@@ -154,8 +156,6 @@ class CustomerController extends Controller
             return view("admin/customer", ['langs' => $this->languages, 'rows' => $rows, 'mode'=>'unit']);
      
         }
-        
-            
     }
 
     public function showMQTT(Request $req){
@@ -166,7 +166,8 @@ class CustomerController extends Controller
         $unit = DB::table('avens')->join('units', 'avens.unit_id','=','units.id')
             ->select('avens.serial_number','units.title')
             ->where('avens.serial_number', $serial)->first();
-        $dev = DB::table('devices')->where('serial', $serial)->first();
+        $timedata = Http::get('https://g5c5rcqqjl.execute-api.eu-central-1.amazonaws.com/api/rispondi?address=a0001&topic=polling');
+        $dev = json_decode($timedata, true);
         $imgpath = DB::table('devices')->where('serial', $serial)->first()->imgpath ;
         return view('admin/mqtt4', ['showDevice' => $showDevice, 'unitON' => $unitON, 'langs' => $this->languages,
             'serial_number' => $serial, 'unit' => $unit->title, 'imgpath' => $imgpath, 'dev' => $dev]);
@@ -223,7 +224,54 @@ class CustomerController extends Controller
             return $rows;
         }
     }
+// #######################  table  ####################
+    public function general() {
+        $client = new Client();
+        $response = Http::get('https://g5c5rcqqjl.execute-api.eu-central-1.amazonaws.com/api/rispondi?address=a0001&topic=polling');
+        $data = json_decode($response->body());
+        if(is_object($data)) {
+            return view('admin/datatable/general', ['langs' => $this->languages, 'rows' => $data]);
+        } else {
+            // Handle the case where $previousState is not an object
+            return "Error: Data not in the expected format";
+        }
+    }
 
+    public function advanced() {
+        $client = new Client();
+        $response = Http::get('https://g5c5rcqqjl.execute-api.eu-central-1.amazonaws.com/api/rispondi?address=a0001&topic=debug');
+        $data = json_decode($response->body());
+        if(is_object($data)) {
+            return view('admin/datatable/advanced', ['langs' => $this->languages, 'rows' => $data]);
+        } else {
+            // Handle the case where $previousState is not an object
+            return "Error: Data not in the expected format";
+        }
+    }
+
+    public function modify() {
+        $client = new Client();
+        $response = Http::get('https://g5c5rcqqjl.execute-api.eu-central-1.amazonaws.com/api/rispondi?address=a0001&topic=eeprom');
+        $data = json_decode($response->body());
+        if($data !== null) {
+            if(property_exists($data, 'previousState') && is_string($data->previousState)) {
+                // Double decode the nested JSON string
+                $previousState = json_decode($data->previousState);
+    
+                // Check if the nested JSON data was decoded successfully
+                if($previousState !== null) {
+                    return view('admin/datatable/modify', ['langs' => $this->languages, 'rows' => $previousState]);
+                } else {
+                    // Handle the case where $previousState is not an object
+                    return "Error: Nested data not in the expected format";
+                }
+            } else {
+                // Handle the case where the main JSON data is not in the expected format
+                return "Error: Main data not in the expected format";
+            }
+        }
+    }
+// #######################  table  ####################
     public function back(){
         // var_dump("back");die();
         return Redirect::back();
